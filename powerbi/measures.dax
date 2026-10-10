@@ -1,0 +1,238 @@
+-- DAX measure library for the FEC sales model.
+-- The same expressions are embedded in FEC_Sales.SemanticModel/model.bim.
+-- Put dim_date[date] on the axis. Mark dim_date as a date table on first open.
+
+// Revenue
+[Recognized Revenue] =
+SUM ( fact_sales[recognized_revenue] )
+-- format: ₹ #,0
+
+// Margin
+[COGS] =
+SUM ( fact_sales[cogs] )
+-- format: ₹ #,0
+
+[Gross Profit] =
+[Recognized Revenue] - [COGS]
+-- format: ₹ #,0
+
+[Gross Margin %] =
+DIVIDE ( [Gross Profit], [Recognized Revenue] )
+-- format: 0.0%
+
+[Freight Cost] =
+SUM ( fact_sales[freight_cost] )
+-- format: ₹ #,0
+
+[Contribution Profit] =
+[Gross Profit] - [Freight Cost]
+-- format: ₹ #,0
+
+[Contribution Margin %] =
+DIVIDE ( [Contribution Profit], [Recognized Revenue] )
+-- format: 0.0%
+
+// Unit economics
+[Net Quantity] =
+SUM ( fact_sales[net_qty] )
+-- format: #,0
+
+[Average Selling Price] =
+DIVIDE ( [Recognized Revenue], [Net Quantity] )
+-- format: ₹ #,0.00
+
+[Unit Cost] =
+DIVIDE ( [COGS], [Net Quantity] )
+-- format: ₹ #,0.00
+
+[Unit Margin] =
+[Average Selling Price] - [Unit Cost]
+-- format: ₹ #,0.00
+
+[Discount Rate] =
+DIVIDE ( SUM ( fact_sales[discount_amount] ), SUM ( fact_sales[list_revenue] ) )
+-- format: 0.0%
+
+[Price Realization] =
+DIVIDE ( [Recognized Revenue], SUM ( fact_sales[list_revenue] ) )
+-- format: 0.0%
+
+[Return Rate] =
+DIVIDE ( SUM ( fact_sales[return_qty] ), SUM ( fact_sales[quantity] ) )
+-- format: 0.0%
+
+// Supplier performance
+[Purchase Value] =
+SUM ( fact_purchases[purchase_value] )
+-- format: ₹ #,0
+
+// Unit economics
+[Purchase Cost per Unit] =
+DIVIDE ( [Purchase Value], SUM ( fact_purchases[qty_received] ) )
+-- format: ₹ #,0.00
+
+[Purchase Price Variance %] =
+VAR StandardCost =
+    SUMX (
+        fact_purchases,
+        fact_purchases[qty_received] * RELATED ( dim_product[standard_cost] )
+    )
+RETURN
+    DIVIDE ( [Purchase Value] - StandardCost, StandardCost )
+-- format: 0.0%
+
+// Supplier performance
+[On-Time Delivery %] =
+DIVIDE ( SUM ( fact_purchases[on_time_flag] ), COUNTROWS ( fact_purchases ) )
+-- format: 0.0%
+
+[Fill Rate %] =
+DIVIDE ( SUM ( fact_purchases[qty_received] ), SUM ( fact_purchases[qty_ordered] ) )
+-- format: 0.0%
+
+[Defect Rate %] =
+DIVIDE ( SUM ( fact_purchases[qty_defective] ), SUM ( fact_purchases[qty_received] ) )
+-- format: 0.0%
+
+[Average Lead Time (days)] =
+AVERAGE ( fact_purchases[actual_lead_days] )
+-- format: 0.0
+
+// Risk
+[Top 10 Spend Share] =
+VAR BySupplier =
+    ADDCOLUMNS (
+        SUMMARIZE ( dim_supplier, dim_supplier[supplier_id] ),
+        "@Spend", [Purchase Value]
+    )
+VAR TopSpend =
+    SUMX ( TOPN ( 10, BySupplier, [@Spend], DESC ), [@Spend] )
+RETURN
+    DIVIDE ( TopSpend, [Purchase Value] )
+-- format: 0.0%
+
+[Spend HHI] =
+VAR BySupplier =
+    ADDCOLUMNS (
+        FILTER (
+            SUMMARIZE ( dim_supplier, dim_supplier[supplier_id] ),
+            [Purchase Value] > 0
+        ),
+        "@Share", DIVIDE ( [Purchase Value], CALCULATE ( [Purchase Value], ALL ( dim_supplier ) ) )
+    )
+RETURN
+    SUMX ( BySupplier, [@Share] * [@Share] )
+-- format: 0.000
+
+[Single-Source SKU %] =
+VAR Products =
+    SUMMARIZE (
+        fact_purchases,
+        fact_purchases[product_id],
+        "@Suppliers", DISTINCTCOUNT ( fact_purchases[supplier_id] )
+    )
+RETURN
+    DIVIDE (
+        COUNTROWS ( FILTER ( Products, [@Suppliers] = 1 ) ),
+        COUNTROWS ( Products )
+    )
+-- format: 0.0%
+
+[Weighted Days Payable] =
+DIVIDE (
+    SUMX ( dim_supplier, [Purchase Value] * dim_supplier[payment_terms_days] ),
+    [Purchase Value]
+)
+-- format: 0.0
+
+// Growth
+[Revenue Prior Year] =
+VAR MinDate = MIN ( dim_date[date] )
+VAR MaxDate = MAX ( dim_date[date] )
+RETURN
+    CALCULATE (
+        [Recognized Revenue],
+        ALL ( dim_date ),
+        dim_date[date] >= EDATE ( MinDate, -12 ),
+        dim_date[date] <= EDATE ( MaxDate, -12 )
+    )
+-- format: ₹ #,0
+
+[Revenue YoY %] =
+DIVIDE ( [Recognized Revenue] - [Revenue Prior Year], [Revenue Prior Year] )
+-- format: 0.0%
+
+[Gross Margin Prior Year] =
+VAR MinDate = MIN ( dim_date[date] )
+VAR MaxDate = MAX ( dim_date[date] )
+RETURN
+    CALCULATE (
+        [Gross Margin %],
+        ALL ( dim_date ),
+        dim_date[date] >= EDATE ( MinDate, -12 ),
+        dim_date[date] <= EDATE ( MaxDate, -12 )
+    )
+-- format: 0.0%
+
+[Gross Margin Change bps] =
+( [Gross Margin %] - [Gross Margin Prior Year] ) * 10000
+-- format: 0
+
+[Revenue FY25 vs FY24] =
+VAR FY25 = CALCULATE ( [Recognized Revenue], dim_date[fy_label] = "FY25" )
+VAR FY24 = CALCULATE ( [Recognized Revenue], dim_date[fy_label] = "FY24" )
+RETURN DIVIDE ( FY25 - FY24, FY24 )
+-- format: 0.0%
+
+// Unit economics
+[Supplier Cost Index] =
+VAR Categories = VALUES ( dim_product[category] )
+VAR Numerator =
+    SUMX (
+        Categories,
+        VAR BaseQty =
+            CALCULATE (
+                SUM ( fact_purchases[qty_received] ),
+                DATESBETWEEN ( dim_date[date], DATE ( 2023, 4, 1 ), DATE ( 2023, 6, 30 ) )
+            )
+        VAR LatestCost =
+            CALCULATE (
+                [Purchase Cost per Unit],
+                DATESBETWEEN ( dim_date[date], DATE ( 2025, 7, 1 ), DATE ( 2025, 9, 30 ) )
+            )
+        RETURN LatestCost * BaseQty
+    )
+VAR Denominator =
+    SUMX (
+        Categories,
+        VAR BaseQty =
+            CALCULATE (
+                SUM ( fact_purchases[qty_received] ),
+                DATESBETWEEN ( dim_date[date], DATE ( 2023, 4, 1 ), DATE ( 2023, 6, 30 ) )
+            )
+        VAR BaseCost =
+            CALCULATE (
+                [Purchase Cost per Unit],
+                DATESBETWEEN ( dim_date[date], DATE ( 2023, 4, 1 ), DATE ( 2023, 6, 30 ) )
+            )
+        RETURN BaseCost * BaseQty
+    )
+RETURN DIVIDE ( Numerator, Denominator )
+-- format: 0.00
+
+// Margin
+[Private Label Margin Gap bps] =
+VAR PrivateLabel =
+    CALCULATE (
+        [Gross Margin %],
+        dim_product[brand_type] = "Private Label",
+        dim_product[category] = "Snacks"
+    )
+VAR Branded =
+    CALCULATE (
+        [Gross Margin %],
+        dim_product[brand_type] = "Branded",
+        dim_product[category] = "Snacks"
+    )
+RETURN ( PrivateLabel - Branded ) * 10000
+-- format: 0

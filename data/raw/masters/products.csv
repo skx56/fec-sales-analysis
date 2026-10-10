@@ -1,0 +1,147 @@
+product_id,sku,product_name,category,subcategory,brand_type,uom,standard_cost,list_price
+P001,TEA-001,Assam CTC Dust 250 g,Tea,Assam CTC Dust,Branded,kg,232.8,329.8
+P002,TEA-002,Assam CTC Dust 500 g,Tea,Assam CTC Dust,Branded,kg,236.4,334.9
+P003,TEA-003,Assam CTC Dust 1 kg,Tea,Assam CTC Dust,Branded,kg,240.0,340.0
+P004,TEA-004,Orthodox Gold 250 g,Tea,Orthodox Gold,Branded,kg,243.6,345.1
+P005,TEA-005,Orthodox Gold 500 g,Tea,Orthodox Gold,Branded,kg,247.2,350.2
+P006,TEA-006,Orthodox Gold 1 kg,Tea,Orthodox Gold,Branded,kg,232.8,329.8
+P007,TEA-007,Second Flush Leaf 250 g,Tea,Second Flush Leaf,Branded,kg,236.4,334.9
+P008,TEA-008,Second Flush Leaf 500 g,Tea,Second Flush Leaf,Branded,kg,240.0,340.0
+P009,TEA-009,Second Flush Leaf 1 kg,Tea,Second Flush Leaf,Branded,kg,243.6,345.1
+P010,TEA-010,Gold Blend 250 g,Tea,Gold Blend,Branded,kg,247.2,350.2
+P011,TEA-011,Gold Blend 500 g,Tea,Gold Blend,Branded,kg,232.8,329.8
+P012,TEA-012,Gold Blend 1 kg,Tea,Gold Blend,Branded,kg,236.4,334.9
+P013,TEA-013,Premium Dust 250 g,Tea,Premium Dust,Branded,kg,240.0,340.0
+P014,TEA-014,Premium Dust 500 g,Tea,Premium Dust,Branded,kg,243.6,345.1
+P015,TEA-015,Premium Dust 1 kg,Tea,Premium Dust,Branded,kg,247.2,350.2
+P016,TEA-016,Green Assam 250 g,Tea,Green Assam,Branded,kg,232.8,329.8
+P017,OIL-001,Mustard Oil 1 L,Edible Oils,Mustard Oil,Branded,L,137.74,165.87
+P018,OIL-002,Mustard Oil 5 L,Edible Oils,Mustard Oil,Branded,L,139.87,168.44
+P019,OIL-003,Mustard Oil 15 L,Edible Oils,Mustard Oil,Branded,L,142.0,171.0
+P020,OIL-004,Refined Soybean 1 L,Edible Oils,Refined Soybean,Branded,L,144.13,173.56
+P021,OIL-005,Refined Soybean 5 L,Edible Oils,Refined Soybean,Branded,L,146.26,176.13
+P022,OIL-006,Refined Soybean 15 L,Edible Oils,Refined Soybean,Branded,L,137.74,165.87
+P023,OIL-007,Sunflower Oil 1 L,Edible Oils,Sunflower Oil,Branded,L,139.87,168.44
+P024,OIL-008,Sunflower Oil 5 L,Edible Oils,Sunflower Oil,Branded,L,142.0,171.0
+P025,OIL-009,Sunflower Oil 15 L,Edible Oils,Sunflower Oil,Branded,L,144.13,173.56
+P026,OIL-010,Rice Bran Oil 1 L,Edible Oils,Rice Bran Oil,Branded,L,146.26,176.13
+P027,OIL-011,Rice Bran Oil 5 L,Edible Oils,Rice Bran Oil,Branded,L,137.74,165.87
+P028,OIL-012,Rice Bran Oil 15 L,Edible Oils,Rice Bran Oil,Branded,L,139.87,168.44
+P029,OIL-013,Groundnut Oil 1 L,Edible Oils,Groundnut Oil,Branded,L,142.0,171.0
+P030,OIL-014,Groundnut Oil 5 L,Edible Oils,Groundnut Oil,Branded,L,144.13,173.56
+P031,STP-001,Parboiled Rice 1 kg,Staples,Parboiled Rice,Private Label,kg,41.9,54.57
+P032,STP-002,Parboiled Rice 5 kg,Staples,Parboiled Rice,Branded,kg,47.28,57.13
+P033,STP-003,Parboiled Rice 10 kg,Staples,Parboiled Rice,Branded,kg,48.0,58.0
+P034,STP-004,Parboiled Rice 25 kg,Staples,Parboiled Rice,Private Label,kg,43.85,57.1
+P035,STP-005,Raw Rice 1 kg,Staples,Raw Rice,Branded,kg,49.44,59.74
+P036,STP-006,Raw Rice 5 kg,Staples,Raw Rice,Branded,kg,46.56,56.26
+P037,STP-007,Raw Rice 10 kg,Staples,Raw Rice,Private Label,kg,42.55,55.42
+P038,STP-008,Raw Rice 25 kg,Staples,Raw Rice,Branded,kg,48.0,58.0
+P039,STP-009,Atta 1 kg,Staples,Atta,Branded,kg,48.72,58.87
+P040,STP-010,Atta 5 kg,Staples,Atta,Private Label,kg,44.5,57.95
+P041,STP-011,Atta 10 kg,Staples,Atta,Branded,kg,46.56,56.26
+P042,STP-012,Atta 25 kg,Staples,Atta,Branded,kg,47.28,57.13
+P043,STP-013,Maida 1 kg,Staples,Maida,Private Label,kg,43.2,56.26
+P044,STP-014,Maida 5 kg,Staples,Maida,Branded,kg,48.72,58.87
+P045,STP-015,Maida 10 kg,Staples,Maida,Branded,kg,49.44,59.74
+P046,STP-016,Maida 25 kg,Staples,Maida,Private Label,kg,41.9,54.57
+P047,STP-017,Masoor Dal 1 kg,Staples,Masoor Dal,Branded,kg,47.28,57.13
+P048,STP-018,Masoor Dal 5 kg,Staples,Masoor Dal,Branded,kg,48.0,58.0
+P049,SPC-001,Turmeric Powder 100 g,Spices,Turmeric Powder,Branded,kg,252.2,378.3
+P050,SPC-002,Turmeric Powder 200 g,Spices,Turmeric Powder,Branded,kg,256.1,384.15
+P051,SPC-003,Turmeric Powder 500 g,Spices,Turmeric Powder,Branded,kg,260.0,390.0
+P052,SPC-004,Red Chilli 100 g,Spices,Red Chilli,Branded,kg,263.9,395.85
+P053,SPC-005,Red Chilli 200 g,Spices,Red Chilli,Branded,kg,267.8,401.7
+P054,SPC-006,Red Chilli 500 g,Spices,Red Chilli,Branded,kg,252.2,378.3
+P055,SPC-007,Cumin 100 g,Spices,Cumin,Branded,kg,256.1,384.15
+P056,SPC-008,Cumin 200 g,Spices,Cumin,Branded,kg,260.0,390.0
+P057,SPC-009,Cumin 500 g,Spices,Cumin,Branded,kg,263.9,395.85
+P058,SPC-010,Coriander 100 g,Spices,Coriander,Branded,kg,267.8,401.7
+P059,SPC-011,Coriander 200 g,Spices,Coriander,Branded,kg,252.2,378.3
+P060,SPC-012,Coriander 500 g,Spices,Coriander,Branded,kg,256.1,384.15
+P061,SPC-013,Ginger Powder 100 g,Spices,Ginger Powder,Branded,kg,260.0,390.0
+P062,SPC-014,Ginger Powder 200 g,Spices,Ginger Powder,Branded,kg,263.9,395.85
+P063,SPC-015,Ginger Powder 500 g,Spices,Ginger Powder,Branded,kg,267.8,401.7
+P064,SPC-016,Black Pepper 100 g,Spices,Black Pepper,Branded,kg,252.2,378.3
+P065,SNK-001,Bhujia 40 g,Snacks,Bhujia,Private Label,kg,31.43,50.81
+P066,SNK-002,Bhujia 150 g,Snacks,Bhujia,Branded,kg,35.46,53.19
+P067,SNK-003,Bhujia 400 g,Snacks,Bhujia,Branded,kg,36.0,54.0
+P068,SNK-004,Mixture 40 g,Snacks,Mixture,Private Label,kg,32.89,53.17
+P069,SNK-005,Mixture 150 g,Snacks,Mixture,Branded,kg,37.08,55.62
+P070,SNK-006,Mixture 400 g,Snacks,Mixture,Branded,kg,34.92,52.38
+P071,SNK-007,Potato Chips 40 g,Snacks,Potato Chips,Private Label,kg,31.91,51.59
+P072,SNK-008,Potato Chips 150 g,Snacks,Potato Chips,Branded,kg,36.0,54.0
+P073,SNK-009,Potato Chips 400 g,Snacks,Potato Chips,Branded,kg,36.54,54.81
+P074,SNK-010,Roasted Chana 40 g,Snacks,Roasted Chana,Private Label,kg,33.37,53.95
+P075,SNK-011,Roasted Chana 150 g,Snacks,Roasted Chana,Branded,kg,34.92,52.38
+P076,SNK-012,Roasted Chana 400 g,Snacks,Roasted Chana,Branded,kg,35.46,53.19
+P077,SNK-013,Cookies 40 g,Snacks,Cookies,Private Label,kg,32.4,52.38
+P078,SNK-014,Cookies 150 g,Snacks,Cookies,Branded,kg,36.54,54.81
+P079,SNK-015,Cookies 400 g,Snacks,Cookies,Branded,kg,37.08,55.62
+P080,SNK-016,Puffs 40 g,Snacks,Puffs,Private Label,kg,31.43,50.81
+P081,SNK-017,Puffs 150 g,Snacks,Puffs,Branded,kg,35.46,53.19
+P082,SNK-018,Puffs 400 g,Snacks,Puffs,Branded,kg,36.0,54.0
+P083,SNK-019,Sev 40 g,Snacks,Sev,Private Label,kg,32.89,53.17
+P084,SNK-020,Sev 150 g,Snacks,Sev,Branded,kg,37.08,55.62
+P085,BEV-001,Mango Drink 250 ml,Beverages,Mango Drink,Branded,L,27.16,42.68
+P086,BEV-002,Mango Drink 750 ml,Beverages,Mango Drink,Branded,L,27.58,43.34
+P087,BEV-003,Mango Drink 2 L,Beverages,Mango Drink,Branded,L,28.0,44.0
+P088,BEV-004,Litchi Drink 250 ml,Beverages,Litchi Drink,Branded,L,28.42,44.66
+P089,BEV-005,Litchi Drink 750 ml,Beverages,Litchi Drink,Branded,L,28.84,45.32
+P090,BEV-006,Litchi Drink 2 L,Beverages,Litchi Drink,Branded,L,27.16,42.68
+P091,BEV-007,Orange Squash 250 ml,Beverages,Orange Squash,Branded,L,27.58,43.34
+P092,BEV-008,Orange Squash 750 ml,Beverages,Orange Squash,Branded,L,28.0,44.0
+P093,BEV-009,Orange Squash 2 L,Beverages,Orange Squash,Branded,L,28.42,44.66
+P094,BEV-010,Packaged Water 250 ml,Beverages,Packaged Water,Branded,L,28.84,45.32
+P095,BEV-011,Packaged Water 750 ml,Beverages,Packaged Water,Branded,L,27.16,42.68
+P096,BEV-012,Packaged Water 2 L,Beverages,Packaged Water,Branded,L,27.58,43.34
+P097,BEV-013,Iced Tea 250 ml,Beverages,Iced Tea,Branded,L,28.0,44.0
+P098,BEV-014,Iced Tea 750 ml,Beverages,Iced Tea,Branded,L,28.42,44.66
+P099,PCE-001,Bathing Soap 75 ml,Personal Care,Bathing Soap,Branded,L,92.15,137.74
+P100,PCE-002,Bathing Soap 200 ml,Personal Care,Bathing Soap,Branded,L,93.58,139.87
+P101,PCE-003,Bathing Soap 500 ml,Personal Care,Bathing Soap,Branded,L,95.0,142.0
+P102,PCE-004,Shampoo 75 ml,Personal Care,Shampoo,Branded,L,96.42,144.13
+P103,PCE-005,Shampoo 200 ml,Personal Care,Shampoo,Branded,L,97.85,146.26
+P104,PCE-006,Shampoo 500 ml,Personal Care,Shampoo,Branded,L,92.15,137.74
+P105,PCE-007,Hair Oil 75 ml,Personal Care,Hair Oil,Branded,L,93.58,139.87
+P106,PCE-008,Hair Oil 200 ml,Personal Care,Hair Oil,Branded,L,95.0,142.0
+P107,PCE-009,Hair Oil 500 ml,Personal Care,Hair Oil,Branded,L,96.42,144.13
+P108,PCE-010,Toothpaste 75 ml,Personal Care,Toothpaste,Branded,L,97.85,146.26
+P109,PCE-011,Toothpaste 200 ml,Personal Care,Toothpaste,Branded,L,92.15,137.74
+P110,PCE-012,Toothpaste 500 ml,Personal Care,Toothpaste,Branded,L,93.58,139.87
+P111,PCE-013,Face Wash 75 ml,Personal Care,Face Wash,Branded,L,95.0,142.0
+P112,PCE-014,Face Wash 200 ml,Personal Care,Face Wash,Branded,L,96.42,144.13
+P113,HMC-001,Detergent Powder 500 ml,Home Care,Detergent Powder,Private Label,L,54.13,86.56
+P114,HMC-002,Detergent Powder 1 L,Home Care,Detergent Powder,Branded,L,61.07,90.62
+P115,HMC-003,Detergent Powder 2 L,Home Care,Detergent Powder,Branded,L,62.0,92.0
+P116,HMC-004,Dishwash Liquid 500 ml,Home Care,Dishwash Liquid,Private Label,L,56.64,90.58
+P117,HMC-005,Dishwash Liquid 1 L,Home Care,Dishwash Liquid,Branded,L,63.86,94.76
+P118,HMC-006,Dishwash Liquid 2 L,Home Care,Dishwash Liquid,Branded,L,60.14,89.24
+P119,HMC-007,Floor Cleaner 500 ml,Home Care,Floor Cleaner,Private Label,L,54.96,87.9
+P120,HMC-008,Floor Cleaner 1 L,Home Care,Floor Cleaner,Branded,L,62.0,92.0
+P121,HMC-009,Floor Cleaner 2 L,Home Care,Floor Cleaner,Branded,L,62.93,93.38
+P122,HMC-010,Toilet Cleaner 500 ml,Home Care,Toilet Cleaner,Private Label,L,57.47,91.92
+P123,HMC-011,Toilet Cleaner 1 L,Home Care,Toilet Cleaner,Branded,L,60.14,89.24
+P124,HMC-012,Toilet Cleaner 2 L,Home Care,Toilet Cleaner,Branded,L,61.07,90.62
+P125,DRY-001,Toned Milk 200 g,Dairy,Toned Milk,Branded,kg,56.26,71.78
+P126,DRY-002,Toned Milk 500 g,Dairy,Toned Milk,Branded,kg,57.13,72.89
+P127,DRY-003,Toned Milk 1 kg,Dairy,Toned Milk,Branded,kg,58.0,74.0
+P128,DRY-004,Curd 200 g,Dairy,Curd,Branded,kg,58.87,75.11
+P129,DRY-005,Curd 500 g,Dairy,Curd,Branded,kg,59.74,76.22
+P130,DRY-006,Curd 1 kg,Dairy,Curd,Branded,kg,56.26,71.78
+P131,DRY-007,Paneer 200 g,Dairy,Paneer,Branded,kg,57.13,72.89
+P132,DRY-008,Paneer 500 g,Dairy,Paneer,Branded,kg,58.0,74.0
+P133,DRY-009,Paneer 1 kg,Dairy,Paneer,Branded,kg,58.87,75.11
+P134,DRY-010,Ghee 200 g,Dairy,Ghee,Branded,kg,59.74,76.22
+P135,PKG-001,Corrugated Carton unit,Packaging,Corrugated Carton,Branded,unit,14.55,20.37
+P136,PKG-002,Corrugated Carton 100-pack,Packaging,Corrugated Carton,Branded,unit,14.78,20.68
+P137,PKG-003,Corrugated Carton 500-pack,Packaging,Corrugated Carton,Branded,unit,15.0,21.0
+P138,PKG-004,LDPE Pouch Roll unit,Packaging,LDPE Pouch Roll,Branded,unit,15.22,21.31
+P139,PKG-005,LDPE Pouch Roll 100-pack,Packaging,LDPE Pouch Roll,Branded,unit,15.45,21.63
+P140,PKG-006,LDPE Pouch Roll 500-pack,Packaging,LDPE Pouch Roll,Branded,unit,14.55,20.37
+P141,PKG-007,PET Jar unit,Packaging,PET Jar,Branded,unit,14.78,20.68
+P142,PKG-008,PET Jar 100-pack,Packaging,PET Jar,Branded,unit,15.0,21.0
+P143,PKG-009,PET Jar 500-pack,Packaging,PET Jar,Branded,unit,15.22,21.31
+P144,PKG-010,Shrink Film unit,Packaging,Shrink Film,Branded,unit,15.45,21.63
+P145,PKG-011,Shrink Film 100-pack,Packaging,Shrink Film,Branded,unit,14.55,20.37
+P146,PKG-012,Shrink Film 500-pack,Packaging,Shrink Film,Branded,unit,14.78,20.68

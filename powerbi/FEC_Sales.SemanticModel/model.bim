@@ -1,0 +1,822 @@
+{
+  "compatibilityLevel": 1567,
+  "model": {
+    "culture": "en-IN",
+    "dataAccessOptions": {
+      "legacyRedirects": true,
+      "returnErrorValuesAsNull": true
+    },
+    "defaultPowerBIDataSourceVersion": "powerBI_V3",
+    "sourceQueryCulture": "en-IN",
+    "tables": [
+      {
+        "name": "dim_date",
+        "columns": [
+          {
+            "name": "date_key",
+            "dataType": "int64",
+            "sourceColumn": "date_key",
+            "summarizeBy": "none",
+            "isKey": true
+          },
+          {
+            "name": "date",
+            "dataType": "dateTime",
+            "sourceColumn": "date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "calendar_year",
+            "dataType": "int64",
+            "sourceColumn": "calendar_year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "quarter",
+            "dataType": "int64",
+            "sourceColumn": "quarter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month",
+            "dataType": "int64",
+            "sourceColumn": "month",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_name",
+            "dataType": "string",
+            "sourceColumn": "month_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "month_start",
+            "dataType": "dateTime",
+            "sourceColumn": "month_start",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "fy_year",
+            "dataType": "int64",
+            "sourceColumn": "fy_year",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "fy_label",
+            "dataType": "string",
+            "sourceColumn": "fy_label",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "fiscal_quarter",
+            "dataType": "int64",
+            "sourceColumn": "fiscal_quarter",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "fiscal_month",
+            "dataType": "int64",
+            "sourceColumn": "fiscal_month",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_date",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"/Users/saksham56/Developer/fec-sales-analysis/data/powerbi/dim_date.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"date_key\", Int64.Type}, {\"date\", type date}, {\"calendar_year\", Int64.Type}, {\"quarter\", Int64.Type}, {\"month\", Int64.Type}, {\"month_name\", type text}, {\"month_start\", type date}, {\"fy_year\", Int64.Type}, {\"fy_label\", type text}, {\"fiscal_quarter\", Int64.Type}, {\"fiscal_month\", Int64.Type}})",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_supplier",
+        "columns": [
+          {
+            "name": "supplier_id",
+            "dataType": "string",
+            "sourceColumn": "supplier_id",
+            "summarizeBy": "none",
+            "isKey": true
+          },
+          {
+            "name": "supplier_name",
+            "dataType": "string",
+            "sourceColumn": "supplier_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "category_focus",
+            "dataType": "string",
+            "sourceColumn": "category_focus",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "city",
+            "dataType": "string",
+            "sourceColumn": "city",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "state",
+            "dataType": "string",
+            "sourceColumn": "state",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "payment_terms_days",
+            "dataType": "int64",
+            "sourceColumn": "payment_terms_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "contracted_lead_days",
+            "dataType": "int64",
+            "sourceColumn": "contracted_lead_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "tier",
+            "dataType": "string",
+            "sourceColumn": "tier",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "onboard_date",
+            "dataType": "dateTime",
+            "sourceColumn": "onboard_date",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "cohort",
+            "dataType": "string",
+            "sourceColumn": "cohort",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_supplier",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"/Users/saksham56/Developer/fec-sales-analysis/data/powerbi/dim_supplier.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"supplier_id\", type text}, {\"supplier_name\", type text}, {\"category_focus\", type text}, {\"city\", type text}, {\"state\", type text}, {\"payment_terms_days\", Int64.Type}, {\"contracted_lead_days\", Int64.Type}, {\"tier\", type text}, {\"onboard_date\", type date}, {\"cohort\", type text}})",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_product",
+        "columns": [
+          {
+            "name": "product_id",
+            "dataType": "string",
+            "sourceColumn": "product_id",
+            "summarizeBy": "none",
+            "isKey": true
+          },
+          {
+            "name": "sku",
+            "dataType": "string",
+            "sourceColumn": "sku",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "product_name",
+            "dataType": "string",
+            "sourceColumn": "product_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "category",
+            "dataType": "string",
+            "sourceColumn": "category",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "subcategory",
+            "dataType": "string",
+            "sourceColumn": "subcategory",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "brand_type",
+            "dataType": "string",
+            "sourceColumn": "brand_type",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "uom",
+            "dataType": "string",
+            "sourceColumn": "uom",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "standard_cost",
+            "dataType": "double",
+            "sourceColumn": "standard_cost",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "list_price",
+            "dataType": "double",
+            "sourceColumn": "list_price",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_product",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"/Users/saksham56/Developer/fec-sales-analysis/data/powerbi/dim_product.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"product_id\", type text}, {\"sku\", type text}, {\"product_name\", type text}, {\"category\", type text}, {\"subcategory\", type text}, {\"brand_type\", type text}, {\"uom\", type text}, {\"standard_cost\", type number}, {\"list_price\", type number}})",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "dim_customer",
+        "columns": [
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id",
+            "summarizeBy": "none",
+            "isKey": true
+          },
+          {
+            "name": "customer_name",
+            "dataType": "string",
+            "sourceColumn": "customer_name",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "channel",
+            "dataType": "string",
+            "sourceColumn": "channel",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "city",
+            "dataType": "string",
+            "sourceColumn": "city",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "state",
+            "dataType": "string",
+            "sourceColumn": "state",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "region_group",
+            "dataType": "string",
+            "sourceColumn": "region_group",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "dim_customer",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"/Users/saksham56/Developer/fec-sales-analysis/data/powerbi/dim_customer.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"customer_id\", type text}, {\"customer_name\", type text}, {\"channel\", type text}, {\"city\", type text}, {\"state\", type text}, {\"region_group\", type text}})",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      },
+      {
+        "name": "fact_sales",
+        "columns": [
+          {
+            "name": "sale_id",
+            "dataType": "string",
+            "sourceColumn": "sale_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "invoice_id",
+            "dataType": "string",
+            "sourceColumn": "invoice_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "date_key",
+            "dataType": "int64",
+            "sourceColumn": "date_key",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "product_id",
+            "dataType": "string",
+            "sourceColumn": "product_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "customer_id",
+            "dataType": "string",
+            "sourceColumn": "customer_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "supplier_id",
+            "dataType": "string",
+            "sourceColumn": "supplier_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "quantity",
+            "dataType": "double",
+            "sourceColumn": "quantity",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "return_qty",
+            "dataType": "double",
+            "sourceColumn": "return_qty",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "net_qty",
+            "dataType": "double",
+            "sourceColumn": "net_qty",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "list_price",
+            "dataType": "double",
+            "sourceColumn": "list_price",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "discount_rate",
+            "dataType": "double",
+            "sourceColumn": "discount_rate",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "unit_price",
+            "dataType": "double",
+            "sourceColumn": "unit_price",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "unit_cost",
+            "dataType": "double",
+            "sourceColumn": "unit_cost",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "freight_per_unit",
+            "dataType": "double",
+            "sourceColumn": "freight_per_unit",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "list_revenue",
+            "dataType": "double",
+            "sourceColumn": "list_revenue",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "discount_amount",
+            "dataType": "double",
+            "sourceColumn": "discount_amount",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "recognized_revenue",
+            "dataType": "double",
+            "sourceColumn": "recognized_revenue",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "cogs",
+            "dataType": "double",
+            "sourceColumn": "cogs",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "freight_cost",
+            "dataType": "double",
+            "sourceColumn": "freight_cost",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "gross_profit",
+            "dataType": "double",
+            "sourceColumn": "gross_profit",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "contribution_profit",
+            "dataType": "double",
+            "sourceColumn": "contribution_profit",
+            "summarizeBy": "sum"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_sales",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"/Users/saksham56/Developer/fec-sales-analysis/data/powerbi/fact_sales.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"sale_id\", type text}, {\"invoice_id\", type text}, {\"date_key\", Int64.Type}, {\"product_id\", type text}, {\"customer_id\", type text}, {\"supplier_id\", type text}, {\"quantity\", type number}, {\"return_qty\", type number}, {\"net_qty\", type number}, {\"list_price\", type number}, {\"discount_rate\", type number}, {\"unit_price\", type number}, {\"unit_cost\", type number}, {\"freight_per_unit\", type number}, {\"list_revenue\", type number}, {\"discount_amount\", type number}, {\"recognized_revenue\", type number}, {\"cogs\", type number}, {\"freight_cost\", type number}, {\"gross_profit\", type number}, {\"contribution_profit\", type number}})",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ],
+        "measures": [
+          {
+            "name": "Recognized Revenue",
+            "displayFolder": "Revenue",
+            "formatString": "\u20b9 #,0",
+            "expression": "SUM ( fact_sales[recognized_revenue] )"
+          },
+          {
+            "name": "COGS",
+            "displayFolder": "Margin",
+            "formatString": "\u20b9 #,0",
+            "expression": "SUM ( fact_sales[cogs] )"
+          },
+          {
+            "name": "Gross Profit",
+            "displayFolder": "Margin",
+            "formatString": "\u20b9 #,0",
+            "expression": "[Recognized Revenue] - [COGS]"
+          },
+          {
+            "name": "Gross Margin %",
+            "displayFolder": "Margin",
+            "formatString": "0.0%",
+            "expression": "DIVIDE ( [Gross Profit], [Recognized Revenue] )"
+          },
+          {
+            "name": "Freight Cost",
+            "displayFolder": "Margin",
+            "formatString": "\u20b9 #,0",
+            "expression": "SUM ( fact_sales[freight_cost] )"
+          },
+          {
+            "name": "Contribution Profit",
+            "displayFolder": "Margin",
+            "formatString": "\u20b9 #,0",
+            "expression": "[Gross Profit] - [Freight Cost]"
+          },
+          {
+            "name": "Contribution Margin %",
+            "displayFolder": "Margin",
+            "formatString": "0.0%",
+            "expression": "DIVIDE ( [Contribution Profit], [Recognized Revenue] )"
+          },
+          {
+            "name": "Net Quantity",
+            "displayFolder": "Unit economics",
+            "formatString": "#,0",
+            "expression": "SUM ( fact_sales[net_qty] )"
+          },
+          {
+            "name": "Average Selling Price",
+            "displayFolder": "Unit economics",
+            "formatString": "\u20b9 #,0.00",
+            "expression": "DIVIDE ( [Recognized Revenue], [Net Quantity] )"
+          },
+          {
+            "name": "Unit Cost",
+            "displayFolder": "Unit economics",
+            "formatString": "\u20b9 #,0.00",
+            "expression": "DIVIDE ( [COGS], [Net Quantity] )"
+          },
+          {
+            "name": "Unit Margin",
+            "displayFolder": "Unit economics",
+            "formatString": "\u20b9 #,0.00",
+            "expression": "[Average Selling Price] - [Unit Cost]"
+          },
+          {
+            "name": "Discount Rate",
+            "displayFolder": "Unit economics",
+            "formatString": "0.0%",
+            "expression": "DIVIDE ( SUM ( fact_sales[discount_amount] ), SUM ( fact_sales[list_revenue] ) )"
+          },
+          {
+            "name": "Price Realization",
+            "displayFolder": "Unit economics",
+            "formatString": "0.0%",
+            "expression": "DIVIDE ( [Recognized Revenue], SUM ( fact_sales[list_revenue] ) )"
+          },
+          {
+            "name": "Return Rate",
+            "displayFolder": "Unit economics",
+            "formatString": "0.0%",
+            "expression": "DIVIDE ( SUM ( fact_sales[return_qty] ), SUM ( fact_sales[quantity] ) )"
+          },
+          {
+            "name": "Purchase Value",
+            "displayFolder": "Supplier performance",
+            "formatString": "\u20b9 #,0",
+            "expression": "SUM ( fact_purchases[purchase_value] )"
+          },
+          {
+            "name": "Purchase Cost per Unit",
+            "displayFolder": "Unit economics",
+            "formatString": "\u20b9 #,0.00",
+            "expression": "DIVIDE ( [Purchase Value], SUM ( fact_purchases[qty_received] ) )"
+          },
+          {
+            "name": "Purchase Price Variance %",
+            "displayFolder": "Unit economics",
+            "formatString": "0.0%",
+            "expression": "VAR StandardCost =\n    SUMX (\n        fact_purchases,\n        fact_purchases[qty_received] * RELATED ( dim_product[standard_cost] )\n    )\nRETURN\n    DIVIDE ( [Purchase Value] - StandardCost, StandardCost )"
+          },
+          {
+            "name": "On-Time Delivery %",
+            "displayFolder": "Supplier performance",
+            "formatString": "0.0%",
+            "expression": "DIVIDE ( SUM ( fact_purchases[on_time_flag] ), COUNTROWS ( fact_purchases ) )"
+          },
+          {
+            "name": "Fill Rate %",
+            "displayFolder": "Supplier performance",
+            "formatString": "0.0%",
+            "expression": "DIVIDE ( SUM ( fact_purchases[qty_received] ), SUM ( fact_purchases[qty_ordered] ) )"
+          },
+          {
+            "name": "Defect Rate %",
+            "displayFolder": "Supplier performance",
+            "formatString": "0.0%",
+            "expression": "DIVIDE ( SUM ( fact_purchases[qty_defective] ), SUM ( fact_purchases[qty_received] ) )"
+          },
+          {
+            "name": "Average Lead Time (days)",
+            "displayFolder": "Supplier performance",
+            "formatString": "0.0",
+            "expression": "AVERAGE ( fact_purchases[actual_lead_days] )"
+          },
+          {
+            "name": "Top 10 Spend Share",
+            "displayFolder": "Risk",
+            "formatString": "0.0%",
+            "expression": "VAR BySupplier =\n    ADDCOLUMNS (\n        SUMMARIZE ( dim_supplier, dim_supplier[supplier_id] ),\n        \"@Spend\", [Purchase Value]\n    )\nVAR TopSpend =\n    SUMX ( TOPN ( 10, BySupplier, [@Spend], DESC ), [@Spend] )\nRETURN\n    DIVIDE ( TopSpend, [Purchase Value] )"
+          },
+          {
+            "name": "Spend HHI",
+            "displayFolder": "Risk",
+            "formatString": "0.000",
+            "expression": "VAR BySupplier =\n    ADDCOLUMNS (\n        FILTER (\n            SUMMARIZE ( dim_supplier, dim_supplier[supplier_id] ),\n            [Purchase Value] > 0\n        ),\n        \"@Share\", DIVIDE ( [Purchase Value], CALCULATE ( [Purchase Value], ALL ( dim_supplier ) ) )\n    )\nRETURN\n    SUMX ( BySupplier, [@Share] * [@Share] )"
+          },
+          {
+            "name": "Single-Source SKU %",
+            "displayFolder": "Risk",
+            "formatString": "0.0%",
+            "expression": "VAR Products =\n    SUMMARIZE (\n        fact_purchases,\n        fact_purchases[product_id],\n        \"@Suppliers\", DISTINCTCOUNT ( fact_purchases[supplier_id] )\n    )\nRETURN\n    DIVIDE (\n        COUNTROWS ( FILTER ( Products, [@Suppliers] = 1 ) ),\n        COUNTROWS ( Products )\n    )"
+          },
+          {
+            "name": "Weighted Days Payable",
+            "displayFolder": "Risk",
+            "formatString": "0.0",
+            "expression": "DIVIDE (\n    SUMX ( dim_supplier, [Purchase Value] * dim_supplier[payment_terms_days] ),\n    [Purchase Value]\n)"
+          },
+          {
+            "name": "Revenue Prior Year",
+            "displayFolder": "Growth",
+            "formatString": "\u20b9 #,0",
+            "expression": "VAR MinDate = MIN ( dim_date[date] )\nVAR MaxDate = MAX ( dim_date[date] )\nRETURN\n    CALCULATE (\n        [Recognized Revenue],\n        ALL ( dim_date ),\n        dim_date[date] >= EDATE ( MinDate, -12 ),\n        dim_date[date] <= EDATE ( MaxDate, -12 )\n    )"
+          },
+          {
+            "name": "Revenue YoY %",
+            "displayFolder": "Growth",
+            "formatString": "0.0%",
+            "expression": "DIVIDE ( [Recognized Revenue] - [Revenue Prior Year], [Revenue Prior Year] )"
+          },
+          {
+            "name": "Gross Margin Prior Year",
+            "displayFolder": "Growth",
+            "formatString": "0.0%",
+            "expression": "VAR MinDate = MIN ( dim_date[date] )\nVAR MaxDate = MAX ( dim_date[date] )\nRETURN\n    CALCULATE (\n        [Gross Margin %],\n        ALL ( dim_date ),\n        dim_date[date] >= EDATE ( MinDate, -12 ),\n        dim_date[date] <= EDATE ( MaxDate, -12 )\n    )"
+          },
+          {
+            "name": "Gross Margin Change bps",
+            "displayFolder": "Growth",
+            "formatString": "0",
+            "expression": "( [Gross Margin %] - [Gross Margin Prior Year] ) * 10000"
+          },
+          {
+            "name": "Revenue FY25 vs FY24",
+            "displayFolder": "Growth",
+            "formatString": "0.0%",
+            "expression": "VAR FY25 = CALCULATE ( [Recognized Revenue], dim_date[fy_label] = \"FY25\" )\nVAR FY24 = CALCULATE ( [Recognized Revenue], dim_date[fy_label] = \"FY24\" )\nRETURN DIVIDE ( FY25 - FY24, FY24 )"
+          },
+          {
+            "name": "Supplier Cost Index",
+            "displayFolder": "Unit economics",
+            "formatString": "0.00",
+            "expression": "VAR Categories = VALUES ( dim_product[category] )\nVAR Numerator =\n    SUMX (\n        Categories,\n        VAR BaseQty =\n            CALCULATE (\n                SUM ( fact_purchases[qty_received] ),\n                DATESBETWEEN ( dim_date[date], DATE ( 2023, 4, 1 ), DATE ( 2023, 6, 30 ) )\n            )\n        VAR LatestCost =\n            CALCULATE (\n                [Purchase Cost per Unit],\n                DATESBETWEEN ( dim_date[date], DATE ( 2025, 7, 1 ), DATE ( 2025, 9, 30 ) )\n            )\n        RETURN LatestCost * BaseQty\n    )\nVAR Denominator =\n    SUMX (\n        Categories,\n        VAR BaseQty =\n            CALCULATE (\n                SUM ( fact_purchases[qty_received] ),\n                DATESBETWEEN ( dim_date[date], DATE ( 2023, 4, 1 ), DATE ( 2023, 6, 30 ) )\n            )\n        VAR BaseCost =\n            CALCULATE (\n                [Purchase Cost per Unit],\n                DATESBETWEEN ( dim_date[date], DATE ( 2023, 4, 1 ), DATE ( 2023, 6, 30 ) )\n            )\n        RETURN BaseCost * BaseQty\n    )\nRETURN DIVIDE ( Numerator, Denominator )"
+          },
+          {
+            "name": "Private Label Margin Gap bps",
+            "displayFolder": "Margin",
+            "formatString": "0",
+            "expression": "VAR PrivateLabel =\n    CALCULATE (\n        [Gross Margin %],\n        dim_product[brand_type] = \"Private Label\",\n        dim_product[category] = \"Snacks\"\n    )\nVAR Branded =\n    CALCULATE (\n        [Gross Margin %],\n        dim_product[brand_type] = \"Branded\",\n        dim_product[category] = \"Snacks\"\n    )\nRETURN ( PrivateLabel - Branded ) * 10000"
+          }
+        ]
+      },
+      {
+        "name": "fact_purchases",
+        "columns": [
+          {
+            "name": "purchase_id",
+            "dataType": "string",
+            "sourceColumn": "purchase_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "po_id",
+            "dataType": "string",
+            "sourceColumn": "po_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "date_key",
+            "dataType": "int64",
+            "sourceColumn": "date_key",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "supplier_id",
+            "dataType": "string",
+            "sourceColumn": "supplier_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "product_id",
+            "dataType": "string",
+            "sourceColumn": "product_id",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "qty_ordered",
+            "dataType": "double",
+            "sourceColumn": "qty_ordered",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "qty_received",
+            "dataType": "double",
+            "sourceColumn": "qty_received",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "qty_defective",
+            "dataType": "double",
+            "sourceColumn": "qty_defective",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "unit_cost",
+            "dataType": "double",
+            "sourceColumn": "unit_cost",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "purchase_value",
+            "dataType": "double",
+            "sourceColumn": "purchase_value",
+            "summarizeBy": "sum"
+          },
+          {
+            "name": "contracted_lead_days",
+            "dataType": "int64",
+            "sourceColumn": "contracted_lead_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "actual_lead_days",
+            "dataType": "int64",
+            "sourceColumn": "actual_lead_days",
+            "summarizeBy": "none"
+          },
+          {
+            "name": "on_time_flag",
+            "dataType": "int64",
+            "sourceColumn": "on_time_flag",
+            "summarizeBy": "none"
+          }
+        ],
+        "partitions": [
+          {
+            "name": "fact_purchases",
+            "mode": "import",
+            "source": {
+              "type": "m",
+              "expression": [
+                "let",
+                "    Source = Csv.Document(File.Contents(\"/Users/saksham56/Developer/fec-sales-analysis/data/powerbi/fact_purchases.csv\"), [Delimiter=\",\", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),",
+                "    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),",
+                "    Typed = Table.TransformColumnTypes(Promoted, {{\"purchase_id\", type text}, {\"po_id\", type text}, {\"date_key\", Int64.Type}, {\"supplier_id\", type text}, {\"product_id\", type text}, {\"qty_ordered\", type number}, {\"qty_received\", type number}, {\"qty_defective\", type number}, {\"unit_cost\", type number}, {\"purchase_value\", type number}, {\"contracted_lead_days\", Int64.Type}, {\"actual_lead_days\", Int64.Type}, {\"on_time_flag\", Int64.Type}})",
+                "in",
+                "    Typed"
+              ]
+            }
+          }
+        ]
+      }
+    ],
+    "relationships": [
+      {
+        "name": "sales_date",
+        "fromTable": "fact_sales",
+        "fromColumn": "date_key",
+        "toTable": "dim_date",
+        "toColumn": "date_key",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "sales_product",
+        "fromTable": "fact_sales",
+        "fromColumn": "product_id",
+        "toTable": "dim_product",
+        "toColumn": "product_id",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "sales_customer",
+        "fromTable": "fact_sales",
+        "fromColumn": "customer_id",
+        "toTable": "dim_customer",
+        "toColumn": "customer_id",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "sales_supplier",
+        "fromTable": "fact_sales",
+        "fromColumn": "supplier_id",
+        "toTable": "dim_supplier",
+        "toColumn": "supplier_id",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "purchases_date",
+        "fromTable": "fact_purchases",
+        "fromColumn": "date_key",
+        "toTable": "dim_date",
+        "toColumn": "date_key",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "purchases_product",
+        "fromTable": "fact_purchases",
+        "fromColumn": "product_id",
+        "toTable": "dim_product",
+        "toColumn": "product_id",
+        "crossFilteringBehavior": "oneDirection"
+      },
+      {
+        "name": "purchases_supplier",
+        "fromTable": "fact_purchases",
+        "fromColumn": "supplier_id",
+        "toTable": "dim_supplier",
+        "toColumn": "supplier_id",
+        "crossFilteringBehavior": "oneDirection"
+      }
+    ]
+  }
+}

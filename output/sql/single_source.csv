@@ -1,0 +1,23 @@
+sku,product_name,category,supplier_name,spend,category_spend_share
+OIL-012,Rice Bran Oil 15 L,Edible Oils,Kamrup Agro Foods,25759607.830000002,0.07299757265260597
+STP-006,Raw Rice 5 kg,Staples,Dispur Grain Merchants,23615385.53,0.05844844504327209
+STP-008,Raw Rice 25 kg,Staples,Dispur Grain Merchants,23578000.14,0.05835591562383659
+STP-015,Maida 10 kg,Staples,Dispur Grain Merchants,23404101.52,0.05792551384524784
+STP-002,Parboiled Rice 5 kg,Staples,Dispur Grain Merchants,23176420.41,0.0573619995706949
+TEA-006,Orthodox Gold 1 kg,Tea,Brahmaputra Leaf Co,12274912.9,0.061016521841007365
+DRY-005,Curd 500 g,Dairy,Khanapara Dairy,9199989.63,0.10114455012793998
+DRY-006,Curd 1 kg,Dairy,Khanapara Dairy,9198818.17,0.10113167111399994
+BEV-013,Iced Tea 250 ml,Beverages,Brahmaputra Beverages,7983253.56,0.0726755349248307
+SNK-010,Roasted Chana 40 g,Snacks,Nilachal Snacks,7204632.43,0.04851259894434035
+PCE-001,Bathing Soap 75 ml,Personal Care,Kamakhya Personal Care,6919568.16,0.07181097900108252
+PCE-003,Bathing Soap 500 ml,Personal Care,Kamakhya Personal Care,6877492.63,0.07137432097106906
+PCE-009,Hair Oil 500 ml,Personal Care,Kamakhya Personal Care,6843215.39,0.0710185932572958
+PKG-004,LDPE Pouch Roll unit,Packaging,Lokhra Pack Co,5482084.98,0.08817256991526022
+PKG-005,LDPE Pouch Roll 100-pack,Packaging,Azara Corrugators,5338806.74,0.08586811628496728
+SPC-001,Turmeric Powder 100 g,Spices,Panbazar Grinders,4995771.42,0.0646026040806679
+SPC-004,Red Chilli 100 g,Spices,Kohima Dry Ginger,4980606.33,0.06440649736906065
+SPC-016,Black Pepper 100 g,Spices,Kohima Dry Ginger,4921942.58,0.06364788959930458
+SPC-013,Ginger Powder 100 g,Spices,Agartala Spice Route,4893366.83,0.06327836351246889
+SPC-014,Ginger Powder 200 g,Spices,Fancy Bazar Masala,4839464.32,0.06258132551378395
+SPC-015,Ginger Powder 500 g,Spices,Barak Spice Collective,4810315.93,0.06220439435732225
+SPC-002,Turmeric Powder 200 g,Spices,Barak Spice Collective,4805917.41,0.06214751508439089

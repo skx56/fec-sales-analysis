@@ -1,0 +1,121 @@
+supplier_id,supplier_name,category_focus,city,state,payment_terms_days,contracted_lead_days,tier,onboard_date,cohort
+S001,Brahmaputra Leaf Co,Tea,Dibrugarh,Assam,60,8,Strategic,2022-04-01,Incumbent
+S002,Kaziranga Tea Estate,Tea,Golaghat,Assam,30,8,Preferred,2022-04-01,Incumbent
+S003,Jorhat Gold Leaf,Tea,Jorhat,Assam,30,8,Preferred,2022-04-01,Incumbent
+S004,Dibrugarh Highlands Tea,Tea,Dibrugarh,Assam,30,8,Preferred,2022-04-01,Incumbent
+S005,Tezpur Garden Packers,Tea,Tezpur,Assam,30,8,Preferred,2022-04-01,Incumbent
+S006,Majuli River Tea,Tea,Majuli,Assam,30,8,Preferred,2022-04-01,Incumbent
+S007,Sivasagar Orthodox Traders,Tea,Sivasagar,Assam,30,8,Preferred,2022-04-01,Incumbent
+S008,Numaligarh Tea House,Tea,Numaligarh,Assam,30,8,Preferred,2022-04-01,Incumbent
+S009,Tinsukia Second Flush,Tea,Tinsukia,Assam,30,8,Preferred,2022-04-01,Incumbent
+S010,Sonari Valley Tea,Tea,Sonari,Assam,15,8,Transactional,2022-04-01,Incumbent
+S011,Golaghat Leaf Co,Tea,Golaghat,Assam,15,8,Transactional,2022-04-01,Incumbent
+S012,Bokakhat Garden Supplies,Tea,Bokakhat,Assam,15,8,Transactional,2022-04-01,Incumbent
+S013,North Bank Tea Co,Tea,Lakhimpur,Assam,15,8,Transactional,2022-04-01,Incumbent
+S014,Naharkatia Packers,Tea,Naharkatia,Assam,15,8,Transactional,2022-04-01,Incumbent
+S015,Digboi Hills Tea,Tea,Digboi,Assam,15,8,Transactional,2022-04-01,Incumbent
+S016,Margherita CTC House,Tea,Margherita,Assam,15,8,Transactional,2022-04-01,Incumbent
+S017,Moran Small Growers,Tea,Moran,Assam,15,8,Transactional,2024-06-01,New
+S018,Amguri Tea Works,Tea,Amguri,Assam,15,8,Transactional,2024-02-01,New
+S019,Kamrup Agro Foods,Edible Oils,Guwahati,Assam,60,8,Strategic,2022-04-01,Incumbent
+S020,Barak Valley Refinery,Edible Oils,Silchar,Assam,30,8,Preferred,2022-04-01,Incumbent
+S021,Noonmati Oil Mills,Edible Oils,Guwahati,Assam,30,8,Preferred,2022-04-01,Incumbent
+S022,Saurashtra Seed Oil,Edible Oils,Rajkot,Gujarat,30,18,Preferred,2022-04-01,Incumbent
+S023,Nagaon Mustard Mill,Edible Oils,Nagaon,Assam,30,8,Preferred,2022-04-01,Incumbent
+S024,Goalpara Oil Traders,Edible Oils,Goalpara,Assam,30,8,Preferred,2022-04-01,Incumbent
+S025,Bongaigaon Refiners,Edible Oils,Bongaigaon,Assam,15,8,Transactional,2022-04-01,Incumbent
+S026,Silchar Edible Oils,Edible Oils,Silchar,Assam,15,8,Transactional,2022-04-01,Incumbent
+S027,Dhubri Oil Depot,Edible Oils,Dhubri,Assam,15,8,Transactional,2022-04-01,Incumbent
+S028,Fancy Bazar Oils,Edible Oils,Guwahati,Assam,15,8,Transactional,2022-04-01,Incumbent
+S029,Athgaon Vanaspati,Edible Oils,Guwahati,Assam,15,8,Transactional,2024-08-01,New
+S030,Rajkot Groundnut Co,Edible Oils,Rajkot,Gujarat,15,18,Transactional,2024-03-01,New
+S031,Dispur Grain Merchants,Staples,Guwahati,Assam,60,8,Strategic,2022-04-01,Incumbent
+S032,Maligaon Rice Mills,Staples,Guwahati,Assam,30,8,Preferred,2022-04-01,Incumbent
+S033,Barpeta Atta Works,Staples,Barpeta,Assam,30,8,Preferred,2022-04-01,Incumbent
+S034,Mangaldoi Dal House,Staples,Mangaldoi,Assam,30,8,Preferred,2022-04-01,Incumbent
+S035,Rangia Staple Supply,Staples,Rangia,Assam,30,8,Preferred,2022-04-01,Incumbent
+S036,Nalbari Farm Produce,Staples,Nalbari,Assam,30,8,Preferred,2022-04-01,Incumbent
+S037,Siliguri Grain Link,Staples,Siliguri,West Bengal,30,12,Preferred,2022-04-01,Incumbent
+S038,Dhekiajuli Rice Co,Staples,Dhekiajuli,Assam,15,8,Transactional,2022-04-01,Incumbent
+S039,Morigaon Atta Mill,Staples,Morigaon,Assam,15,8,Transactional,2022-04-01,Incumbent
+S040,Kokrajhar Grain Co,Staples,Kokrajhar,Assam,15,8,Transactional,2022-04-01,Incumbent
+S041,Biswanath Paddy House,Staples,Biswanath,Assam,15,8,Transactional,2022-04-01,Incumbent
+S042,Lakhimpur Staples,Staples,Lakhimpur,Assam,15,8,Transactional,2022-04-01,Incumbent
+S043,Hojai Pulse Traders,Staples,Hojai,Assam,15,8,Transactional,2024-01-15,New
+S044,Bilasipara Rice Depot,Staples,Bilasipara,Assam,15,8,Transactional,2024-05-01,New
+S045,Barak Spice Collective,Spices,Silchar,Assam,45,8,Strategic,2022-04-01,Incumbent
+S046,Fancy Bazar Masala,Spices,Guwahati,Assam,30,8,Preferred,2022-04-01,Incumbent
+S047,Shillong Hill Spices,Spices,Shillong,Meghalaya,30,14,Preferred,2022-04-01,Incumbent
+S048,Imphal Chilli House,Spices,Imphal,Manipur,30,14,Preferred,2022-04-01,Incumbent
+S049,Silchar Ginger Co,Spices,Silchar,Assam,30,8,Preferred,2022-04-01,Incumbent
+S050,Tezpur Pepper Traders,Spices,Tezpur,Assam,30,8,Preferred,2022-04-01,Incumbent
+S051,Guwahati Haldi Mills,Spices,Guwahati,Assam,15,8,Transactional,2022-04-01,Incumbent
+S052,Agartala Spice Route,Spices,Agartala,Tripura,15,14,Transactional,2022-04-01,Incumbent
+S053,Kohima Dry Ginger,Spices,Kohima,Nagaland,15,14,Transactional,2022-04-01,Incumbent
+S054,Panbazar Grinders,Spices,Guwahati,Assam,15,8,Transactional,2022-04-01,Incumbent
+S055,Diphu Hill Masala,Spices,Diphu,Assam,15,8,Transactional,2024-07-01,New
+S056,Aizawl Leaf Spice,Spices,Aizawl,Mizoram,15,14,Transactional,2024-04-01,New
+S057,Nilachal Snacks,Snacks,Guwahati,Assam,45,8,Strategic,2022-04-01,Incumbent
+S058,Umananda Foods,Snacks,Guwahati,Assam,30,8,Preferred,2022-04-01,Incumbent
+S059,Deepor Bites,Snacks,Guwahati,Assam,30,8,Preferred,2022-04-01,Incumbent
+S060,Chandubi Namkeen,Snacks,Chandubi,Assam,30,8,Preferred,2022-04-01,Incumbent
+S061,Palashbari Snacks,Snacks,Palashbari,Assam,30,8,Preferred,2022-04-01,Incumbent
+S062,Mirza Crunch Works,Snacks,Mirza,Assam,30,8,Preferred,2022-04-01,Incumbent
+S063,Chaygaon Savouries,Snacks,Chaygaon,Assam,30,8,Preferred,2022-04-01,Incumbent
+S064,Basistha Foods,Snacks,Guwahati,Assam,15,8,Transactional,2022-04-01,Incumbent
+S065,Sonapur Namkeen,Snacks,Sonapur,Assam,15,8,Transactional,2022-04-01,Incumbent
+S066,Rangiya Snack Co,Snacks,Rangiya,Assam,15,8,Transactional,2022-04-01,Incumbent
+S067,Jagiroad Bakers,Snacks,Jagiroad,Assam,15,8,Transactional,2022-04-01,Incumbent
+S068,Khanapara Munch,Snacks,Guwahati,Assam,15,8,Transactional,2022-04-01,Incumbent
+S069,Azara Private Label Kitchen,Snacks,Azara,Assam,15,8,Transactional,2024-02-01,New
+S070,Beltola Bite Co,Snacks,Guwahati,Assam,15,8,Transactional,2024-09-01,New
+S071,Brahmaputra Beverages,Beverages,Guwahati,Assam,45,8,Strategic,2022-04-01,Incumbent
+S072,Kaziranga Drinks,Beverages,Golaghat,Assam,30,8,Preferred,2022-04-01,Incumbent
+S073,Jorhat Juice Works,Beverages,Jorhat,Assam,30,8,Preferred,2022-04-01,Incumbent
+S074,Guwahati Soda Co,Beverages,Guwahati,Assam,30,8,Preferred,2022-04-01,Incumbent
+S075,Siliguri Beverage Hub,Beverages,Siliguri,West Bengal,30,12,Preferred,2022-04-01,Incumbent
+S076,Shillong Spring Drinks,Beverages,Shillong,Meghalaya,30,14,Preferred,2022-04-01,Incumbent
+S077,Tezpur Nectar,Beverages,Tezpur,Assam,15,8,Transactional,2022-04-01,Incumbent
+S078,Dibrugarh Cold Drinks,Beverages,Dibrugarh,Assam,15,8,Transactional,2022-04-01,Incumbent
+S079,Nagaon Juice Traders,Beverages,Nagaon,Assam,15,8,Transactional,2022-04-01,Incumbent
+S080,Goalpara Beverages,Beverages,Goalpara,Assam,15,8,Transactional,2022-04-01,Incumbent
+S081,Tinsukia Refreshments,Beverages,Tinsukia,Assam,15,8,Transactional,2024-03-01,New
+S082,Dispur Drink House,Beverages,Guwahati,Assam,15,8,Transactional,2024-11-01,New
+S083,Kamakhya Personal Care,Personal Care,Guwahati,Assam,45,8,Strategic,2022-04-01,Incumbent
+S084,Nilachal Care,Personal Care,Guwahati,Assam,30,8,Preferred,2022-04-01,Incumbent
+S085,Kolkata Care Labs,Personal Care,Kolkata,West Bengal,30,12,Preferred,2022-04-01,Incumbent
+S086,Guwahati Hygiene Co,Personal Care,Guwahati,Assam,30,8,Preferred,2022-04-01,Incumbent
+S087,Silchar Care Products,Personal Care,Silchar,Assam,30,8,Preferred,2022-04-01,Incumbent
+S088,Shillong Glow House,Personal Care,Shillong,Meghalaya,15,14,Transactional,2022-04-01,Incumbent
+S089,Imphal Care Works,Personal Care,Imphal,Manipur,15,14,Transactional,2022-04-01,Incumbent
+S090,Jorhat Hygiene,Personal Care,Jorhat,Assam,15,8,Transactional,2022-04-01,Incumbent
+S091,Tezpur Care Traders,Personal Care,Tezpur,Assam,15,8,Transactional,2022-04-01,Incumbent
+S092,Agartala Personal Care,Personal Care,Agartala,Tripura,15,14,Transactional,2024-04-01,New
+S093,Kapili Clean Co,Home Care,Guwahati,Assam,45,8,Strategic,2022-04-01,Incumbent
+S094,Basistha Home Products,Home Care,Guwahati,Assam,30,8,Preferred,2022-04-01,Incumbent
+S095,Maligaon Detergent Works,Home Care,Guwahati,Assam,30,8,Preferred,2022-04-01,Incumbent
+S096,Noonmati Home Care,Home Care,Guwahati,Assam,30,8,Preferred,2022-04-01,Incumbent
+S097,Siliguri Clean Hub,Home Care,Siliguri,West Bengal,30,12,Preferred,2022-04-01,Incumbent
+S098,Nalbari Wash Co,Home Care,Nalbari,Assam,15,8,Transactional,2022-04-01,Incumbent
+S099,Barpeta Home Care,Home Care,Barpeta,Assam,15,8,Transactional,2022-04-01,Incumbent
+S100,Mangaldoi Cleaners,Home Care,Mangaldoi,Assam,15,8,Transactional,2022-04-01,Incumbent
+S101,Luit Home Care,Home Care,Guwahati,Assam,15,8,Transactional,2022-04-01,Incumbent
+S102,Dibrugarh Home Products,Home Care,Dibrugarh,Assam,15,8,Transactional,2024-06-01,New
+S103,Khanapara Dairy,Dairy,Guwahati,Assam,45,8,Strategic,2022-04-01,Incumbent
+S104,Rani Dairy Cooperative,Dairy,Rani,Assam,30,8,Preferred,2022-04-01,Incumbent
+S105,Mirza Milk Supply,Dairy,Mirza,Assam,30,8,Preferred,2022-04-01,Incumbent
+S106,Changsari Dairy,Dairy,Changsari,Assam,30,8,Preferred,2022-04-01,Incumbent
+S107,Jagiroad Milk Products,Dairy,Jagiroad,Assam,15,8,Transactional,2022-04-01,Incumbent
+S108,Rangia Dairy House,Dairy,Rangia,Assam,15,8,Transactional,2022-04-01,Incumbent
+S109,Nagaon Milk Traders,Dairy,Nagaon,Assam,15,8,Transactional,2022-04-01,Incumbent
+S110,Bokakhat Dairy,Dairy,Bokakhat,Assam,15,8,Transactional,2024-01-20,New
+S111,Amingaon Cartons,Packaging,Amingaon,Assam,45,8,Strategic,2022-04-01,Incumbent
+S112,Changsari Polyfilms,Packaging,Changsari,Assam,30,8,Preferred,2022-04-01,Incumbent
+S113,Lokhra Pack Co,Packaging,Guwahati,Assam,30,8,Preferred,2022-04-01,Incumbent
+S114,Pamohi Packaging,Packaging,Guwahati,Assam,30,8,Preferred,2022-04-01,Incumbent
+S115,Boragaon Packs,Packaging,Guwahati,Assam,30,8,Preferred,2022-04-01,Incumbent
+S116,Luit Packaging Works,Packaging,Guwahati,Assam,15,8,Transactional,2022-04-01,Incumbent
+S117,Sarusajai Carton Co,Packaging,Guwahati,Assam,15,8,Transactional,2022-04-01,Incumbent
+S118,Beltola Flexible Pack,Packaging,Guwahati,Assam,15,8,Transactional,2022-04-01,Incumbent
+S119,Azara Corrugators,Packaging,Azara,Assam,15,8,Transactional,2022-04-01,Incumbent
+S120,Khanapara Wraps,Packaging,Guwahati,Assam,15,8,Transactional,2024-05-01,New

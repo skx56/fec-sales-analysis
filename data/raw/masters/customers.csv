@@ -1,0 +1,55 @@
+customer_id,customer_name,channel,city,state,region_group
+C001,Guwahati Wholesale Mart,General Trade,Guwahati,Assam,Assam Valley
+C002,Guwahati Kirana Supply,General Trade,Guwahati,Assam,Assam Valley
+C003,Silchar Wholesale Mart,General Trade,Silchar,Assam,Assam Valley
+C004,Silchar Kirana Supply,General Trade,Silchar,Assam,Assam Valley
+C005,Dibrugarh Wholesale Mart,General Trade,Dibrugarh,Assam,Assam Valley
+C006,Dibrugarh Kirana Supply,General Trade,Dibrugarh,Assam,Assam Valley
+C007,Jorhat Wholesale Mart,General Trade,Jorhat,Assam,Assam Valley
+C008,Jorhat Kirana Supply,General Trade,Jorhat,Assam,Assam Valley
+C009,Tezpur Wholesale Mart,General Trade,Tezpur,Assam,Assam Valley
+C010,Tezpur Kirana Supply,General Trade,Tezpur,Assam,Assam Valley
+C011,Nagaon Wholesale Mart,General Trade,Nagaon,Assam,Assam Valley
+C012,Nagaon Kirana Supply,General Trade,Nagaon,Assam,Assam Valley
+C013,Tinsukia Wholesale Mart,General Trade,Tinsukia,Assam,Assam Valley
+C014,Tinsukia Kirana Supply,General Trade,Tinsukia,Assam,Assam Valley
+C015,Guwahati Modern Bazaar,Modern Trade,Guwahati,Assam,Assam Valley
+C016,Guwahati Hospitality Group,HoReCa,Guwahati,Assam,Assam Valley
+C017,Shillong Wholesale Mart,General Trade,Shillong,Meghalaya,Hill Northeast
+C018,Shillong Kirana Supply,General Trade,Shillong,Meghalaya,Hill Northeast
+C019,Tura Wholesale Mart,General Trade,Tura,Meghalaya,Hill Northeast
+C020,Tura Kirana Supply,General Trade,Tura,Meghalaya,Hill Northeast
+C021,Shillong Modern Bazaar,Modern Trade,Shillong,Meghalaya,Hill Northeast
+C022,Shillong Hospitality Group,HoReCa,Shillong,Meghalaya,Hill Northeast
+C023,Imphal Wholesale Mart,General Trade,Imphal,Manipur,Hill Northeast
+C024,Imphal Kirana Supply,General Trade,Imphal,Manipur,Hill Northeast
+C025,Imphal Modern Bazaar,Modern Trade,Imphal,Manipur,Hill Northeast
+C026,Imphal Hospitality Group,HoReCa,Imphal,Manipur,Hill Northeast
+C027,Dimapur Wholesale Mart,General Trade,Dimapur,Nagaland,Hill Northeast
+C028,Dimapur Kirana Supply,General Trade,Dimapur,Nagaland,Hill Northeast
+C029,Kohima Wholesale Mart,General Trade,Kohima,Nagaland,Hill Northeast
+C030,Kohima Kirana Supply,General Trade,Kohima,Nagaland,Hill Northeast
+C031,Dimapur Modern Bazaar,Modern Trade,Dimapur,Nagaland,Hill Northeast
+C032,Dimapur Hospitality Group,HoReCa,Dimapur,Nagaland,Hill Northeast
+C033,Agartala Wholesale Mart,General Trade,Agartala,Tripura,Hill Northeast
+C034,Agartala Kirana Supply,General Trade,Agartala,Tripura,Hill Northeast
+C035,Agartala Modern Bazaar,Modern Trade,Agartala,Tripura,Hill Northeast
+C036,Agartala Hospitality Group,HoReCa,Agartala,Tripura,Hill Northeast
+C037,Aizawl Wholesale Mart,General Trade,Aizawl,Mizoram,Hill Northeast
+C038,Aizawl Kirana Supply,General Trade,Aizawl,Mizoram,Hill Northeast
+C039,Aizawl Modern Bazaar,Modern Trade,Aizawl,Mizoram,Hill Northeast
+C040,Aizawl Hospitality Group,HoReCa,Aizawl,Mizoram,Hill Northeast
+C041,Itanagar Wholesale Mart,General Trade,Itanagar,Arunachal Pradesh,Hill Northeast
+C042,Itanagar Kirana Supply,General Trade,Itanagar,Arunachal Pradesh,Hill Northeast
+C043,Itanagar Modern Bazaar,Modern Trade,Itanagar,Arunachal Pradesh,Hill Northeast
+C044,Itanagar Hospitality Group,HoReCa,Itanagar,Arunachal Pradesh,Hill Northeast
+C045,Siliguri Wholesale Mart,General Trade,Siliguri,West Bengal,West Bengal
+C046,Siliguri Kirana Supply,General Trade,Siliguri,West Bengal,West Bengal
+C047,Alipurduar Wholesale Mart,General Trade,Alipurduar,West Bengal,West Bengal
+C048,Alipurduar Kirana Supply,General Trade,Alipurduar,West Bengal,West Bengal
+C049,Siliguri Modern Bazaar,Modern Trade,Siliguri,West Bengal,West Bengal
+C050,Siliguri Hospitality Group,HoReCa,Siliguri,West Bengal,West Bengal
+C051,Campus Hospitality Services,Institutional,Guwahati,Assam,Assam Valley
+C052,Guwahati Medical Stores,Institutional,Guwahati,Assam,Assam Valley
+C053,Assam Secretariat Canteen,Institutional,Guwahati,Assam,Assam Valley
+C054,Siliguri Institutional Supply,Institutional,Siliguri,West Bengal,West Bengal

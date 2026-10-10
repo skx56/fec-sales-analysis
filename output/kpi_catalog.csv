@@ -1,0 +1,28 @@
+kpi,value,unit,sql_source,definition
+Recognized revenue,1929557909.82,INR,headline,"Net quantity × net selling price, after returns."
+COGS,1496188719.27,INR,headline,Net quantity × unit purchase cost of the supplying lot.
+Gross profit,433369190.55,INR,headline,Recognized revenue − COGS.
+Gross margin,0.22459506830268033,ratio,headline,Gross profit / recognized revenue.
+Contribution profit,368014095.35,INR,headline,Gross profit − outbound freight.
+Contribution margin,0.19072456622166392,ratio,headline,Contribution profit / recognized revenue.
+Average selling price,74.48919816743928,INR per unit,headline,Recognized revenue / net quantity. Compare inside a category.
+Purchase cost per unit,57.932601591616816,INR per unit,headline,Purchase value / quantity received. Compare inside a category.
+Unit margin,16.729906550227923,INR per unit,headline,"Average selling price − unit cost, inside one category."
+Discount rate,0.05062518845908843,ratio,headline,Discount amount / list revenue.
+Price realization,0.9493748115409115,ratio,headline,Recognized revenue / list revenue.
+Freight per unit,2.5229865415434967,INR per unit,headline,Outbound freight / net quantity.
+Return rate,0.0060922831195592865,ratio,headline,Returned quantity / quantity invoiced.
+On-time delivery,0.922142301710731,ratio,headline,Purchase lines received within the contracted lead time / purchase lines.
+Fill rate,0.9724919628510124,ratio,headline,Quantity received / quantity ordered.
+Defect rate,0.007628714360885989,ratio,headline,Quantity rejected / quantity received.
+Average lead time,8.969867807153966,days,headline,Mean actual days from PO to receipt.
+Top-10 spend share,0.5840091815659401,ratio,headline,Purchase value of the ten largest suppliers / total purchase value.
+Supplier HHI,0.06043401009930368,index,headline,Sum of squared supplier spend shares. Higher means a more concentrated book.
+Single-source SKU share,0.1506849315068493,ratio,headline,SKUs bought from only one supplier / SKUs purchased.
+Weighted days payable,39.68803037403087,days,headline,Spend-weighted contractual payment terms.
+Purchase price variance,0.024882793242528786,ratio,headline,(Actual purchase value − standard cost × qty) / standard value.
+Revenue growth,0.06798063303186908,ratio,headline,FY25 recognized revenue / FY24 recognized revenue − 1.
+Gross margin change,-0.002700417937934574,margin points,headline,"FY25 gross margin − FY24 gross margin, in basis points."
+Supplier cost index,1.0665964634130312,Q1 FY24 = 1,cost_index,Laspeyres index of category unit costs. Apr–Jun 2023 = 100.
+Private-label margin gap,0.04822284127086435,margin points,headline,"Private-label gross margin − branded gross margin, in basis points."
+Supplier score,75.55195743402976,"median, 0–100",supplier_scorecard,"100 × (30% cost position + 25% on-time + 20% fill + 15% quality + 10% margin position), scored against category peers."

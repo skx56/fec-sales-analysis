@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Supplier sales analysis · FEC IIT Guwahati</title>
+<style>
+  :root {
+    --bg: #efece4;
+    --paper: #f6f4ee;
+    --ink: #1c1916;
+    --muted: #6d675f;
+    --line: #ddd6c8;
+    --accent: #1a3c40;
+    --clay: #8d4634;
+    --good: #1f5c45;
+    --serif: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+    --sans: "Avenir Next", "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono: "SF Mono", ui-monospace, Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 15px;
+    line-height: 1.45;
+  }
+  header, main, footer { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+  header { padding: 28px 0 8px; display: flex; justify-content: space-between; gap: 24px; align-items: flex-end; }
+  .eyebrow { margin: 0 0 6px; color: var(--accent); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; }
+  h1 { margin: 0; font-family: var(--serif); font-size: 34px; font-weight: 500; letter-spacing: -0.02em; line-height: 1.1; }
+  .deck { margin: 8px 0 0; color: var(--muted); max-width: 46rem; }
+  .filters { display: flex; gap: 12px; }
+  label { display: flex; flex-direction: column; gap: 4px; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+  select { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line); padding: 6px 8px; min-width: 150px; }
+  nav { width: min(1120px, calc(100% - 40px)); margin: 18px auto 0; display: flex; gap: 18px; border-bottom: 1px solid var(--line); }
+  nav button { font: inherit; background: none; border: 0; border-bottom: 2px solid transparent; padding: 8px 0 10px; color: var(--muted); cursor: pointer; }
+  nav button[aria-pressed="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+  main { padding: 18px 0 40px; }
+  .period { margin: 0 0 10px; color: var(--muted); font-size: 13px; }
+  .kpi-strip { display: grid; grid-template-columns: repeat(6, 1fr); border-top: 1px solid var(--ink); border-bottom: 1px solid var(--line); }
+  .kpi-strip article { padding: 12px 14px 14px 0; }
+  .kpi-strip article + article { padding-left: 14px; border-left: 1px solid var(--line); }
+  .kpi-strip .label { margin: 0; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+  .kpi-strip .value { margin: 6px 0 2px; font-family: var(--serif); font-size: 26px; letter-spacing: -0.02em; }
+  .kpi-strip .delta { margin: 0; font-size: 12px; color: var(--muted); }
+  .delta.up { color: var(--good); }
+  .delta.down { color: var(--clay); }
+  .section-head { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; margin-top: 26px; }
+  h2 { margin: 0; font-family: var(--serif); font-size: 22px; font-weight: 500; }
+  .section-head p, .caption { margin: 4px 0 0; color: var(--muted); font-size: 12px; }
+  .split { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 36px; align-items: start; }
+  .bar-row { display: grid; grid-template-columns: 120px 1fr auto; gap: 10px; align-items: center; margin: 7px 0; font-size: 13px; }
+  .bar-track { height: 8px; background: #e6e0d4; }
+  .bar-fill { display: block; height: 100%; background: var(--accent); }
+  .bar-note { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 12px; }
+  .findings article { border-top: 1px solid var(--line); padding: 11px 0 11px 12px; border-left: 2px solid var(--accent); }
+  .findings h3 { margin: 0 0 4px; font-size: 15px; font-weight: 600; }
+  .findings p { margin: 0; color: var(--ink); }
+  .findings .note { margin-top: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); font-weight: 600; padding: 8px; position: sticky; top: 0; background: var(--paper); cursor: pointer; }
+  td { border-top: 1px solid var(--line); padding: 7px 8px; vertical-align: middle; }
+  th.num, td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .table-wrap { max-height: 560px; overflow: auto; border-top: 1px solid var(--ink); margin-top: 8px; }
+  tr.late td:first-child { border-left: 2px solid var(--clay); }
+  .score { display: inline-block; width: 48px; height: 6px; background: #e6e0d4; margin-right: 6px; vertical-align: middle; }
+  .score span { display: block; height: 100%; background: var(--accent); }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+  .stat-grid h3 { margin: 0 0 8px; font-size: 14px; }
+  .stat-grid dl { margin: 0; display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; }
+  .stat-grid dt { color: var(--muted); }
+  .stat-grid dd { margin: 0; font-variant-numeric: tabular-nums; }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  details { margin-top: 22px; }
+  summary { cursor: pointer; font-family: var(--serif); font-size: 22px; }
+  details p { margin: 8px 0; }
+  details strong { font-weight: 600; }
+  footer { border-top: 1px solid var(--line); padding: 14px 0 28px; color: var(--muted); font-size: 12px; }
+  svg text { font-family: var(--sans); fill: var(--muted); }
+  @media (max-width: 900px) {
+    header { flex-direction: column; align-items: flex-start; }
+    .kpi-strip, .split, .two, .stat-grid { grid-template-columns: 1fr; }
+    .kpi-strip article + article { border-left: 0; padding-left: 0; border-top: 1px solid var(--line); }
+    h1 { font-size: 28px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <p class="eyebrow">Finance &amp; Economics Club · IIT Guwahati</p>
+    <h1>Supplier sales analysis</h1>
+    <p class="deck" id="deck"></p>
+  </div>
+  <div class="filters">
+    <label>Fiscal year <select id="fy"></select></label>
+    <label>Category <select id="cat"></select></label>
+  </div>
+</header>
+<nav>
+  <button type="button" data-page="overview" aria-pressed="true">Overview</button>
+  <button type="button" data-page="economics" aria-pressed="false">Unit economics</button>
+  <button type="button" data-page="suppliers" aria-pressed="false">Suppliers</button>
+  <button type="button" data-page="risk" aria-pressed="false">Risk</button>
+</nav>
+<main><div id="view"></div></main>
+<footer id="foot"></footer>
+<script id="payload" type="application/json">__DATA_JSON__</script>
+<script>
+const DATA = JSON.parse(document.getElementById("payload").textContent);
+const state = { fy: "ALL", category: "ALL", page: "overview", sort: "spend", dir: -1 };
+
+const MONTHS = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+
+function esc(value) {
+  return String(value).replace(/[&<>"']/g, (ch) => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+  }[ch]));
+}
+function inr(value) {
+  const sign = value < 0 ? "-" : "";
+  const amount = Math.abs(value);
+  if (amount >= 1e7) return sign + "₹" + (amount / 1e7).toFixed(2) + " Cr";
+  if (amount >= 1e5) return sign + "₹" + (amount / 1e5).toFixed(2) + " L";
+  return sign + "₹" + Math.round(amount).toLocaleString("en-IN");
+}
+function pct(value) { return (value * 100).toFixed(1) + "%"; }
+function bps(value) {
+  const points = Math.round(value * 10000);
+  return (points > 0 ? "+" : "") + points.toLocaleString("en-IN") + " bps";
+}
+function pp(value) {
+  const points = value * 100;
+  return (points > 0 ? "+" : "") + points.toFixed(1) + " pp";
+}
+function num(value, digits) { return value.toFixed(digits); }
+
+function salesRows() {
+  return DATA.monthly.filter((row) =>
+    (state.fy === "ALL" || row.fy_label === state.fy) &&
+    (state.category === "ALL" || row.category === state.category)
+  );
+}
+function opsRows() {
+  return DATA.ops.filter((row) =>
+    (state.fy === "ALL" || row.fy_label === state.fy) &&
+    (state.category === "ALL" || row.category === state.category)
+  );
+}
+function supplierRows() {
+  const fy = state.fy === "ALL" ? "ALL" : state.fy;
+  return DATA.suppliers.filter((row) =>
+    row.fy_label === fy && (state.category === "ALL" || row.category_focus === state.category)
+  );
+}
+function aggSales(rows) {
+  const total = { revenue: 0, cogs: 0, gp: 0, cp: 0, freight: 0, qty: 0, list: 0, discount: 0, ret: 0, quantity: 0 };
+  rows.forEach((row) => {
+    total.revenue += row.recognized_revenue;
+    total.cogs += row.cogs;
+    total.gp += row.gross_profit;
+    total.cp += row.contribution_profit;
+    total.freight += row.freight_cost;
+    total.qty += row.net_qty;
+    total.list += row.list_revenue;
+    total.discount += row.discount_amount;
+    total.ret += row.return_qty;
+    total.quantity += row.quantity;
+  });
+  total.gm = total.revenue ? total.gp / total.revenue : 0;
+  total.cm = total.revenue ? total.cp / total.revenue : 0;
+  total.asp = total.qty ? total.revenue / total.qty : 0;
+  total.unitCost = total.qty ? total.cogs / total.qty : 0;
+  return total;
+}
+function aggOps(rows) {
+  const total = { spend: 0, received: 0, ordered: 0, defect: 0, ontime: 0, lines: 0, lead: 0 };
+  rows.forEach((row) => {
+    total.spend += row.purchase_value;
+    total.received += row.qty_received;
+    total.ordered += row.qty_ordered;
+    total.defect += row.qty_defective;
+    total.ontime += row.on_time_lines;
+    total.lines += row.po_lines;
+    total.lead += row.lead_time_sum;
+  });
+  total.otd = total.lines ? total.ontime / total.lines : 0;
+  total.fill = total.ordered ? total.received / total.ordered : 0;
+  total.defectRate = total.received ? total.defect / total.received : 0;
+  total.cost = total.received ? total.spend / total.received : 0;
+  total.leadTime = total.lines ? total.lead / total.lines : 0;
+  return total;
+}
+function groupBy(rows, key, aggregate) {
+  const buckets = new Map();
+  rows.forEach((row) => {
+    if (!buckets.has(row[key])) buckets.set(row[key], []);
+    buckets.get(row[key]).push(row);
+  });
+  return [...buckets.entries()].map(([name, items]) => ({ name, ...aggregate(items) }));
+}
+function comparison() {
+  if (state.fy === "FY24") return null;
+  const sales = DATA.monthly.filter((row) => state.category === "ALL" || row.category === state.category);
+  const ops = DATA.ops.filter((row) => state.category === "ALL" || row.category === state.category);
+  let currentFrom, currentTo, priorFrom, priorTo, label;
+  if (state.fy === "FY26") {
+    currentFrom = "2025-04-01"; currentTo = "2025-09-01";
+    priorFrom = "2024-04-01"; priorTo = "2024-09-01";
+    label = "vs FY25 H1";
+  } else {
+    currentFrom = "2024-04-01"; currentTo = "2025-03-01";
+    priorFrom = "2023-04-01"; priorTo = "2024-03-01";
+    label = state.fy === "ALL" ? "FY25 vs FY24" : "vs FY24";
+  }
+  const between = (rows, from, to) => rows.filter((row) => row.month_start >= from && row.month_start <= to);
+  return {
+    label,
+    salesNow: aggSales(between(sales, currentFrom, currentTo)),
+    salesThen: aggSales(between(sales, priorFrom, priorTo)),
+    opsNow: aggOps(between(ops, currentFrom, currentTo)),
+    opsThen: aggOps(between(ops, priorFrom, priorTo))
+  };
+}
+function costIndex() {
+  const ops = DATA.ops.filter((row) => state.category === "ALL" || row.category === state.category);
+  const categories = [...new Set(ops.map((row) => row.category))];
+  let numerator = 0;
+  let denominator = 0;
+  categories.forEach((category) => {
+    const rows = ops.filter((row) => row.category === category);
+    const base = aggOps(rows.filter((row) => row.month_start >= "2023-04-01" && row.month_start <= "2023-06-01"));
+    const latest = aggOps(rows.filter((row) => row.month_start >= "2025-07-01" && row.month_start <= "2025-09-01"));
+    if (!base.received || !latest.received) return;
+    numerator += latest.cost * base.received;
+    denominator += base.cost * base.received;
+  });
+  return denominator ? numerator / denominator : null;
+}
+function tone(value, higherIsBetter) {
+  if (Math.abs(value) < 1e-4) return "flat";
+  const good = higherIsBetter ? value > 0 : value < 0;
+  return good ? "up" : "down";
+}
+function periodLabel() {
+  const fy = state.fy === "ALL" ? "April 2023 – September 2025" : state.fy;
+  const category = state.category === "ALL" ? "all categories" : state.category;
+  return fy + " · " + category;
+}
+
+function kpiStrip() {
+  const sales = aggSales(salesRows());
+  const ops = aggOps(opsRows());
+  const compare = comparison();
+  const tiles = [];
+  const revenueDelta = compare && compare.salesThen.revenue
+    ? (compare.salesNow.revenue - compare.salesThen.revenue) / compare.salesThen.revenue : null;
+  tiles.push({
+    label: "Recognized revenue",
+    value: inr(sales.revenue),
+    delta: revenueDelta == null ? "Full year, no prior" : compare.label + " · " + (revenueDelta > 0 ? "+" : "") + pct(revenueDelta),
+    tone: revenueDelta == null ? "flat" : tone(revenueDelta, true)
+  });
+  const marginDelta = compare ? compare.salesNow.gm - compare.salesThen.gm : null;
+  tiles.push({
+    label: "Gross margin",
+    value: pct(sales.gm),
+    delta: marginDelta == null ? "Full year, no prior" : compare.label + " · " + bps(marginDelta),
+    tone: marginDelta == null ? "flat" : tone(marginDelta, true)
+  });
+  const otdDelta = compare && compare.opsThen.lines ? compare.opsNow.otd - compare.opsThen.otd : null;
+  tiles.push({
+    label: "On-time delivery",
+    value: pct(ops.otd),
+    delta: otdDelta == null ? "Share of purchase lines" : compare.label + " · " + pp(otdDelta),
+    tone: otdDelta == null ? "flat" : tone(otdDelta, true)
+  });
+  const suppliers = supplierRows();
+  const spend = suppliers.reduce((sum, row) => sum + row.spend, 0);
+  const ranked = [...suppliers].sort((a, b) => b.spend - a.spend);
+  if (ranked.length > 12) {
+    const top10 = ranked.slice(0, 10).reduce((sum, row) => sum + row.spend, 0);
+    tiles.push({
+      label: "Top-10 spend share",
+      value: pct(spend ? top10 / spend : 0),
+      delta: "Of purchase value in this view",
+      tone: "flat"
+    });
+  } else {
+    const largest = ranked[0];
+    tiles.push({
+      label: "Largest supplier",
+      value: largest && spend ? pct(largest.spend / spend) : "—",
+      delta: largest ? largest.supplier_name : "No purchases in this view",
+      tone: "flat"
+    });
+  }
+  if (state.category === "ALL") {
+    const index = costIndex();
+    tiles.push({
+      label: "Supplier cost index",
+      value: index == null ? "—" : Math.round(index * 100).toString(),
+      delta: "Laspeyres, Apr–Jun 2023 = 100",
+      tone: "flat"
+    });
+    const cmDelta = compare ? compare.salesNow.cm - compare.salesThen.cm : null;
+    tiles.push({
+      label: "Contribution margin",
+      value: pct(sales.cm),
+      delta: cmDelta == null ? "After outbound freight" : compare.label + " · " + bps(cmDelta),
+      tone: cmDelta == null ? "flat" : tone(cmDelta, true)
+    });
+  } else {
+    tiles.push({
+      label: "Cost per unit",
+      value: "₹" + ops.cost.toFixed(2),
+      delta: "Purchase value / qty received",
+      tone: "flat"
+    });
+    tiles.push({
+      label: "Unit margin",
+      value: "₹" + (sales.asp - sales.unitCost).toFixed(2),
+      delta: "Selling price " + "₹" + sales.asp.toFixed(2) + " · cost " + "₹" + sales.unitCost.toFixed(2),
+      tone: "flat"
+    });
+  }
+  return `<section class="kpi-strip">${tiles.map((tile) => `
+    <article>
+      <p class="label">${esc(tile.label)}</p>
+      <p class="value">${esc(tile.value)}</p>
+      <p class="delta ${tile.tone}">${esc(tile.delta)}</p>
+    </article>`).join("")}</section>`;
+}
+
+function monthLabel(iso) {
+  const [year, month] = iso.split("-");
+  return MONTHS[Number(month) - 1] + " '" + year.slice(2);
+}
+function dualChart(points) {
+  const width = 860, height = 280;
+  const pad = { l: 48, r: 42, t: 12, b: 32 };
+  const innerW = width - pad.l - pad.r;
+  const innerH = height - pad.t - pad.b;
+  const maxRevenue = Math.max(...points.map((point) => point.revenue), 1) * 1.18;
+  const maxMargin = Math.max(0.28, Math.max(...points.map((point) => point.gm)) * 1.25);
+  const x = (index) => pad.l + (index + 0.5) * innerW / points.length;
+  const yRev = (value) => pad.t + innerH - (value / maxRevenue) * innerH;
+  const yGm = (value) => pad.t + innerH - (value / maxMargin) * innerH;
+  const barW = innerW / points.length * 0.62;
+  let grid = "";
+  for (let tick = 0; tick <= 4; tick++) {
+    const value = maxRevenue * tick / 4;
+    const y = yRev(value);
+    grid += `<line x1="${pad.l}" y1="${y}" x2="${width - pad.r}" y2="${y}" stroke="#ddd6c8" />`;
+    grid += `<text x="${pad.l - 6}" y="${y + 3}" text-anchor="end" font-size="10">${(value / 1e7).toFixed(1)}</text>`;
+    const margin = maxMargin * tick / 4;
+    grid += `<text x="${width - pad.r + 6}" y="${yGm(margin) + 3}" font-size="10">${Math.round(margin * 100)}%</text>`;
+  }
+  const bars = points.map((point, index) => {
+    const bx = x(index) - barW / 2;
+    const by = yRev(point.revenue);
+    return `<rect x="${bx}" y="${by}" width="${barW}" height="${pad.t + innerH - by}" fill="#1a3c40"><title>${monthLabel(point.month)} revenue ${inr(point.revenue)}, margin ${pct(point.gm)}</title></rect>`;
+  }).join("");
+  const line = points.map((point, index) => `${x(index)},${yGm(point.gm)}`).join(" ");
+  const dots = points.map((point, index) =>
+    `<circle cx="${x(index)}" cy="${yGm(point.gm)}" r="2.4" fill="#8d4634"><title>${monthLabel(point.month)} gross margin ${pct(point.gm)}</title></circle>`
+  ).join("");
+  const labels = points.map((point, index) => {
+    const month = Number(point.month.slice(5, 7));
+    if (![1, 4, 7, 10].includes(month)) return "";
+    return `<text x="${x(index)}" y="${height - 8}" text-anchor="middle" font-size="10">${monthLabel(point.month)}</text>`;
+  }).join("");
+  return `<svg viewBox="0 0 ${width} ${height}" width="100%" role="img" aria-label="Monthly recognized revenue in crore rupees and gross margin percent">
+    ${grid}${bars}<polyline points="${line}" fill="none" stroke="#8d4634" stroke-width="1.6"/>${dots}${labels}
+    <text x="${pad.l}" y="10" font-size="10">₹ Cr</text>
+    <text x="${width - pad.r}" y="10" text-anchor="end" font-size="10">Margin</text>
+  </svg>`;
+}
+function lineChart(points, yLabel) {
+  const width = 520, height = 240;
+  const pad = { l: 44, r: 12, t: 16, b: 32 };
+  const innerW = width - pad.l - pad.r;
+  const innerH = height - pad.t - pad.b;
+  const maxY = Math.max(...points.flatMap((point) => [point.a, point.b])) * 1.12;
+  const minY = Math.min(...points.flatMap((point) => [point.a, point.b])) * 0.92;
+  const span = maxY - minY || 1;
+  const x = (index) => pad.l + (index + 0.5) * innerW / points.length;
+  const y = (value) => pad.t + innerH - ((value - minY) / span) * innerH;
+  let grid = "";
+  for (let tick = 0; tick <= 4; tick++) {
+    const value = minY + span * tick / 4;
+    const yy = y(value);
+    grid += `<line x1="${pad.l}" y1="${yy}" x2="${width - pad.r}" y2="${yy}" stroke="#ddd6c8"/>`;
+    grid += `<text x="${pad.l - 6}" y="${yy + 3}" text-anchor="end" font-size="10">${Math.round(value)}</text>`;
+  }
+  const path = (key) => points.map((point, index) => `${x(index)},${y(point[key])}`).join(" ");
+  const labels = points.map((point, index) => {
+    const month = Number(point.month.slice(5, 7));
+    if (![4, 10].includes(month)) return "";
+    return `<text x="${x(index)}" y="${height - 8}" text-anchor="middle" font-size="10">${monthLabel(point.month)}</text>`;
+  }).join("");
+  return `<svg viewBox="0 0 ${width} ${height}" width="100%" role="img" aria-label="Edible oil cost index and selling price index, April 2023 equals 100">
+    ${grid}
+    <polyline points="${path("a")}" fill="none" stroke="#8d4634" stroke-width="1.8"/>
+    <polyline points="${path("b")}" fill="none" stroke="#1a3c40" stroke-width="1.8"/>
+    ${labels}
+    <text x="${pad.l}" y="12" font-size="10">${yLabel}</text>
+  </svg>`;
+}
+function waterfall(steps) {
+  const width = 520, height = 240;
+  const pad = { l: 46, r: 10, t: 16, b: 48 };
+  const innerW = width - pad.l - pad.r;
+  const innerH = height - pad.t - pad.b;
+  let level = 0;
+  const bars = steps.map((step) => {
+    if (step.kind === "total") {
+      level = step.value;
+      return { ...step, y0: 0, y1: step.value };
+    }
+    const y0 = level;
+    level += step.value;
+    return { ...step, y0, y1: level };
+  });
+  const maxY = Math.max(...bars.flatMap((bar) => [bar.y0, bar.y1])) * 1.2;
+  const y = (value) => pad.t + innerH - (value / maxY) * innerH;
+  const slot = innerW / bars.length;
+  let marks = "";
+  for (let tick = 0; tick <= 4; tick++) {
+    const value = maxY * tick / 4;
+    const yy = y(value);
+    marks += `<line x1="${pad.l}" y1="${yy}" x2="${width - pad.r}" y2="${yy}" stroke="#ddd6c8"/>`;
+    marks += `<text x="${pad.l - 6}" y="${yy + 3}" text-anchor="end" font-size="10">${Math.round(value * 100)}%</text>`;
+  }
+  const shapes = bars.map((bar, index) => {
+    const top = Math.max(bar.y0, bar.y1);
+    const bottom = Math.min(bar.y0, bar.y1);
+    const color = bar.kind === "total" ? "#1a3c40" : (bar.y1 >= bar.y0 ? "#1f5c45" : "#8d4634");
+    const bx = pad.l + index * slot + slot * 0.18;
+    const bw = slot * 0.64;
+    const label = bar.kind === "total" ? pct(bar.y1) : bps(bar.y1 - bar.y0);
+    return `<rect x="${bx}" y="${y(top)}" width="${bw}" height="${Math.max(1, y(bottom) - y(top))}" fill="${color}"/>
+      <text x="${bx + bw / 2}" y="${y(top) - 4}" text-anchor="middle" font-size="10">${label}</text>
+      <text x="${bx + bw / 2}" y="${height - 28}" text-anchor="middle" font-size="10">${esc(bar.name)}</text>`;
+  }).join("");
+  return `<svg viewBox="0 0 ${width} ${height}" width="100%" role="img" aria-label="Edible oil gross margin bridge from FY24 to FY25">${marks}${shapes}</svg>`;
+}
+function scatter(points) {
+  const width = 860, height = 320;
+  const pad = { l: 48, r: 16, t: 12, b: 36 };
+  const innerW = width - pad.l - pad.r;
+  const innerH = height - pad.t - pad.b;
+  const xMin = 0.84, xMax = 1.16, yMin = 0.55, yMax = 1.02;
+  const x = (value) => pad.l + ((value - xMin) / (xMax - xMin)) * innerW;
+  const y = (value) => pad.t + innerH - ((value - yMin) / (yMax - yMin)) * innerH;
+  const maxSpend = Math.max(...points.map((point) => point.spend), 1);
+  let grid = "";
+  for (let tick = 0; tick <= 4; tick++) {
+    const xv = xMin + (xMax - xMin) * tick / 4;
+    const yv = yMin + (yMax - yMin) * tick / 4;
+    grid += `<line x1="${x(xv)}" y1="${pad.t}" x2="${x(xv)}" y2="${pad.t + innerH}" stroke="#ddd6c8"/>`;
+    grid += `<line x1="${pad.l}" y1="${y(yv)}" x2="${width - pad.r}" y2="${y(yv)}" stroke="#ddd6c8"/>`;
+    grid += `<text x="${x(xv)}" y="${height - 8}" text-anchor="middle" font-size="10">${xv.toFixed(2)}</text>`;
+    grid += `<text x="${pad.l - 6}" y="${y(yv) + 3}" text-anchor="end" font-size="10">${Math.round(yv * 100)}%</text>`;
+  }
+  const dots = points.map((point) => {
+    const radius = 4 + 10 * Math.sqrt(point.spend / maxSpend);
+    const fill = point.otd < 0.8 ? "#8d4634" : "#1a3c40";
+    return `<circle cx="${x(point.cost_index)}" cy="${y(point.otd)}" r="${radius}" fill="${fill}" fill-opacity="0.85"><title>${esc(point.supplier_name)} · cost index ${point.cost_index.toFixed(2)} · on time ${pct(point.otd)} · ${inr(point.spend)}</title></circle>`;
+  }).join("");
+  return `<svg viewBox="0 0 ${width} ${height}" width="100%" role="img" aria-label="Suppliers by cost index and on-time delivery. Circle area is purchase spend.">
+    ${grid}${dots}
+    <text x="16" y="${pad.t + innerH / 2}" transform="rotate(-90 16 ${pad.t + innerH / 2})" text-anchor="middle" font-size="10">On-time delivery</text>
+    <text x="${pad.l + innerW / 2}" y="${height - 2}" text-anchor="middle" font-size="10">Cost index, category median = 1</text>
+  </svg>`;
+}
+
+function barsHTML(items) {
+  const max = Math.max(...items.map((item) => item.revenue), 1);
+  return items.map((item) => `
+    <div class="bar-row">
+      <span>${esc(item.name)}</span>
+      <span class="bar-track"><span class="bar-fill" style="width:${(100 * item.revenue / max).toFixed(1)}%"></span></span>
+      <span class="bar-note">${esc(inr(item.revenue))} · ${esc(pct(item.gm))}</span>
+    </div>`).join("");
+}
+function table(columns, rows, sortable) {
+  const head = columns.map((column) =>
+    `<th class="${column.num ? "num" : ""}" ${sortable ? `data-sort="${esc(column.key)}"` : ""}>${esc(column.label)}${sortable && state.sort === column.key ? (state.dir < 0 ? " ↓" : " ↑") : ""}</th>`
+  ).join("");
+  const body = rows.map((row) => `<tr class="${row.otd != null && row.otd < 0.8 ? "late" : ""}">${columns.map((column) =>
+    `<td class="${column.num ? "num" : ""}">${column.render(row)}</td>`
+  ).join("")}</tr>`).join("");
+  return `<div class="table-wrap"><table><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+}
+function scoreCell(value) {
+  return `<span class="score"><span style="width:${Math.max(0, Math.min(100, value)).toFixed(0)}%"></span></span>${value.toFixed(0)}`;
+}
+
+function overview() {
+  const monthly = groupBy(salesRows(), "month_start", aggSales)
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((row) => ({ month: row.name, revenue: row.revenue, gm: row.gm }));
+  const categories = groupBy(salesRows(), "category", aggSales).sort((a, b) => b.revenue - a.revenue);
+  const findings = DATA.insights.map((item) =>
+    `<article><h3>${esc(item.title)}</h3><p>${esc(item.body)}</p></article>`
+  ).join("");
+  return `
+    <p class="period">${esc(periodLabel())}</p>
+    ${kpiStrip()}
+    <div class="section-head">
+      <h2>Recognized revenue and gross margin by month</h2>
+      <p>Bars are revenue. The line is gross margin.</p>
+    </div>
+    ${dualChart(monthly)}
+    <p class="caption">Source: fact_sales · left axis recognized revenue in ₹ crore · right axis gross margin · ${esc(periodLabel())}</p>
+    <div class="split">
+      <section>
+        <div class="section-head"><h2>Revenue by category</h2><p>Label shows gross margin.</p></div>
+        ${barsHTML(categories)}
+        <p class="caption">Source: fact_sales · ${esc(periodLabel())}</p>
+      </section>
+      <section class="findings">
+        <div class="section-head"><h2>Findings</h2></div>
+        ${findings}
+        <p class="caption note">Findings compare FY24 with FY25 on the full book. Filters above do not change them.</p>
+      </section>
+    </div>`;
+}
+
+function economics() {
+  const categories = groupBy(salesRows(), "category", aggSales)
+    .map((row) => {
+      const ops = aggOps(opsRows().filter((item) => item.category === row.name));
+      return { ...row, purchaseCost: ops.cost };
+    })
+    .sort((a, b) => b.revenue - a.revenue);
+  const columns = [
+    { key: "name", label: "Category", render: (row) => esc(row.name) },
+    { key: "revenue", label: "Revenue", num: true, render: (row) => esc(inr(row.revenue)) },
+    { key: "asp", label: "Selling price", num: true, render: (row) => "₹" + row.asp.toFixed(2) },
+    { key: "purchaseCost", label: "Cost / unit", num: true, render: (row) => "₹" + row.purchaseCost.toFixed(2) },
+    { key: "unit", label: "Unit margin", num: true, render: (row) => "₹" + (row.asp - row.unitCost).toFixed(2) },
+    { key: "gm", label: "Gross margin", num: true, render: (row) => esc(pct(row.gm)) },
+    { key: "cm", label: "Contribution", num: true, render: (row) => esc(pct(row.cm)) }
+  ];
+  const channels = groupBy(salesRows(), "channel", aggSales).sort((a, b) => b.revenue - a.revenue);
+  const regions = groupBy(salesRows(), "region_group", aggSales).sort((a, b) => b.revenue - a.revenue);
+  let oil = "";
+  if (state.category === "ALL" || state.category === "Edible Oils") {
+    const ops = groupBy(DATA.ops.filter((row) => row.category === "Edible Oils"), "month_start", aggOps)
+      .sort((a, b) => a.name.localeCompare(b.name));
+    const sales = groupBy(DATA.monthly.filter((row) => row.category === "Edible Oils"), "month_start", aggSales);
+    const salesMap = new Map(sales.map((row) => [row.name, row]));
+    const baseCost = ops[0] ? ops[0].cost : 1;
+    const basePrice = salesMap.get(ops[0] ? ops[0].name : "") ;
+    const baseAsp = basePrice ? basePrice.asp : 1;
+    const points = ops.map((row) => ({
+      month: row.name,
+      a: baseCost ? (row.cost / baseCost) * 100 : 100,
+      b: baseAsp ? ((salesMap.get(row.name) || {}).asp || baseAsp) / baseAsp * 100 : 100
+    }));
+    const bridge = DATA.bridge;
+    oil = `
+      <div class="two">
+        <section>
+          <div class="section-head"><h2>Edible oils, cost and price</h2><p>April 2023 = 100.</p></div>
+          ${lineChart(points, "Index")}
+          <p class="caption">Clay: purchase cost per unit. Teal: average selling price. Source: fact_purchases and fact_sales.</p>
+        </section>
+        <section>
+          <div class="section-head"><h2>Margin bridge, FY24 to FY25</h2><p>Unit price and unit cost.</p></div>
+          ${waterfall([
+            { name: "FY24", kind: "total", value: bridge.gm_fy24 },
+            { name: "Price", kind: "delta", value: bridge.price_effect },
+            { name: "Cost", kind: "delta", value: bridge.cost_effect },
+            { name: "FY25", kind: "total", value: bridge.gm_fy25 }
+          ])}
+          <p class="caption">Price effect holds FY24 unit cost against the FY25 selling price. Cost effect is the rest of the move in gross margin.</p>
+        </section>
+      </div>`;
+  }
+  return `
+    <p class="period">${esc(periodLabel())}. Cost per unit is meaningful inside a category; packs and units differ across the book.</p>
+    ${kpiStrip()}
+    <div class="section-head"><h2>Unit economics by category</h2><p>Selling price and unit margin use recognized revenue. Cost per unit uses purchases.</p></div>
+    ${table(columns, categories)}
+    ${oil}
+    <div class="two">
+      <section>
+        <div class="section-head"><h2>Gross margin by channel</h2></div>
+        ${barsHTML(channels)}
+        <p class="caption">Source: fact_sales · bar length is revenue · label is gross margin</p>
+      </section>
+      <section>
+        <div class="section-head"><h2>Contribution margin by region</h2></div>
+        ${regions.map((row) => `<div class="bar-row"><span>${esc(row.name)}</span><span class="bar-track"><span class="bar-fill" style="width:${Math.min(100, row.cm * 100 / 0.35).toFixed(1)}%"></span></span><span class="bar-note">${esc(pct(row.cm))} · freight ₹${(row.qty ? row.freight / row.qty : 0).toFixed(2)}</span></div>`).join("")}
+        <p class="caption">Source: fact_sales · bar length is contribution margin, scaled to 35% · ${esc(periodLabel())}</p>
+      </section>
+    </div>`;
+}
+
+function suppliersPage() {
+  const rows = [...supplierRows()].sort((a, b) => (a[state.sort] < b[state.sort] ? -1 : 1) * state.dir);
+  const columns = [
+    { key: "supplier_name", label: "Supplier", render: (row) => esc(row.supplier_name) },
+    { key: "category_focus", label: "Category", render: (row) => esc(row.category_focus) },
+    { key: "tier", label: "Tier", render: (row) => esc(row.tier) },
+    { key: "spend", label: "Spend", num: true, render: (row) => esc(inr(row.spend)) },
+    { key: "gross_margin", label: "Margin", num: true, render: (row) => row.gross_margin == null ? "—" : esc(pct(row.gross_margin)) },
+    { key: "cost_index", label: "Cost index", num: true, render: (row) => row.cost_index.toFixed(2) },
+    { key: "otd", label: "On time", num: true, render: (row) => esc(pct(row.otd)) },
+    { key: "fill_rate", label: "Fill", num: true, render: (row) => esc(pct(row.fill_rate)) },
+    { key: "defect_rate", label: "Defects", num: true, render: (row) => esc(pct(row.defect_rate)) },
+    { key: "lead_time", label: "Lead time", num: true, render: (row) => row.lead_time.toFixed(1) + " d" },
+    { key: "supplier_score", label: "Score", num: true, render: (row) => scoreCell(row.supplier_score) }
+  ];
+  function cohortBlock(name, frame) {
+    const spend = frame.reduce((sum, row) => sum + row.spend, 0);
+    const w = (field) => spend ? frame.reduce((sum, row) => sum + row[field] * row.spend, 0) / spend : 0;
+    return `<div><h3>${esc(name)}</h3><dl>
+      <dt>Suppliers</dt><dd>${frame.length}</dd>
+      <dt>Spend</dt><dd>${esc(inr(spend))}</dd>
+      <dt>Cost index</dt><dd>${w("cost_index").toFixed(2)}</dd>
+      <dt>On time</dt><dd>${esc(pct(w("otd")))}</dd>
+      <dt>Defects</dt><dd>${esc(pct(w("defect_rate")))}</dd>
+      <dt>Median score</dt><dd>${median(frame.map((row) => row.supplier_score)).toFixed(0)}</dd>
+    </dl></div>`;
+  }
+  const all = supplierRows();
+  return `
+    <p class="period">${esc(periodLabel())}. Score is 30% cost position, 25% on-time, 20% fill, 15% quality, 10% margin, against category peers.</p>
+    ${scatter(all)}
+    <p class="caption">Source: supplier scorecard · circle area is spend · clay marks on-time delivery below 80% · ${esc(periodLabel())}</p>
+    <div class="section-head"><h2>Cohort</h2><p>Spend-weighted. New means onboarded from January 2024.</p></div>
+    <div class="stat-grid">
+      ${cohortBlock("Incumbent", all.filter((row) => row.cohort === "Incumbent"))}
+      ${cohortBlock("New", all.filter((row) => row.cohort === "New"))}
+    </div>
+    <div class="section-head"><h2>Scorecard</h2><p>Click a column to sort. A clay mark is on-time delivery below 80%.</p></div>
+    ${table(columns, rows, true)}`;
+}
+function median(values) {
+  const sorted = values.filter((value) => value != null).sort((a, b) => a - b);
+  if (!sorted.length) return 0;
+  const mid = Math.floor(sorted.length / 2);
+  return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+}
+function riskPage() {
+  const rows = supplierRows();
+  const spend = rows.reduce((sum, row) => sum + row.spend, 0);
+  const ordered = [...rows].sort((a, b) => b.spend - a.spend);
+  const top10 = ordered.slice(0, 10).reduce((sum, row) => sum + row.spend, 0) / (spend || 1);
+  const hhi = rows.reduce((sum, row) => sum + Math.pow(row.spend / (spend || 1), 2), 0);
+  const exceptions = ordered.filter((row) => row.otd < 0.8 || row.defect_rate > 0.015 || row.supplier_score < 58).slice(0, 8);
+  const columns = [
+    { key: "supplier_name", label: "Supplier", render: (row) => esc(row.supplier_name) },
+    { key: "category_focus", label: "Category", render: (row) => esc(row.category_focus) },
+    { key: "spend", label: "Spend", num: true, render: (row) => esc(inr(row.spend)) },
+    { key: "otd", label: "On time", num: true, render: (row) => esc(pct(row.otd)) },
+    { key: "defect_rate", label: "Defects", num: true, render: (row) => esc(pct(row.defect_rate)) },
+    { key: "supplier_score", label: "Score", num: true, render: (row) => row.supplier_score.toFixed(0) }
+  ];
+  const singleAll = DATA.singleSource.filter((row) => state.category === "ALL" || row.category === state.category);
+  const singles = singleAll.slice(0, 8);
+  const singleCols = [
+    { key: "product_name", label: "SKU", render: (row) => esc(row.product_name) },
+    { key: "category", label: "Category", render: (row) => esc(row.category) },
+    { key: "supplier_name", label: "Only supplier", render: (row) => esc(row.supplier_name) },
+    { key: "spend", label: "Spend", num: true, render: (row) => esc(inr(row.spend)) },
+    { key: "category_spend_share", label: "Of category", num: true, render: (row) => esc(pct(row.category_spend_share)) }
+  ];
+  const definitions = DATA.definitions.map((item) =>
+    `<p><strong>${esc(item.name)}.</strong> ${esc(item.formula)}</p>`
+  ).join("");
+  return `
+    <p class="period">${esc(periodLabel())}</p>
+    <div class="stat-grid">
+      <div><h3>Concentration</h3><dl>
+        <dt>Top-10 spend share</dt><dd>${esc(pct(top10))}</dd>
+        <dt>HHI</dt><dd>${hhi.toFixed(3)}</dd>
+        <dt>Suppliers in view</dt><dd>${rows.length}</dd>
+        <dt>Single-source SKUs</dt><dd>${singleAll.length}</dd>
+      </dl></div>
+      <div><h3>How to read HHI</h3><p style="margin:0;color:var(--muted)">The index is the sum of squared spend shares. A book split evenly across 120 suppliers would sit near 0.008. Movement toward 0.10 is a real concentration, not a rounding error.</p></div>
+    </div>
+    <div class="section-head"><h2>Exceptions</h2><p>On time below 80%, defect rate above 1.5%, or score below 58.</p></div>
+    ${table(columns, exceptions)}
+    <div class="section-head"><h2>Single-source SKUs</h2><p>Largest by purchase value. A missed delivery has no alternate.</p></div>
+    ${table(singleCols, singles)}
+    <p class="caption">Source: fact_purchases · full window, filtered by category when one is selected</p>
+    <details>
+      <summary>KPI definitions</summary>
+      ${definitions}
+    </details>`;
+}
+
+function render() {
+  document.querySelectorAll("nav button").forEach((button) => {
+    button.setAttribute("aria-pressed", String(button.dataset.page === state.page));
+  });
+  const root = document.getElementById("view");
+  if (state.page === "overview") root.innerHTML = overview();
+  else if (state.page === "economics") root.innerHTML = economics();
+  else if (state.page === "suppliers") root.innerHTML = suppliersPage();
+  else root.innerHTML = riskPage();
+}
+
+function init() {
+  document.getElementById("deck").textContent =
+    `${DATA.meta.suppliers} suppliers · ${DATA.meta.products} SKUs · ${DATA.meta.customers} customers · April 2023 to September 2025`;
+  const fy = document.getElementById("fy");
+  [["ALL", "All years"], ["FY24", "FY24"], ["FY25", "FY25"], ["FY26", "FY26 (H1)"]].forEach(([value, label]) => {
+    const option = document.createElement("option");
+    option.value = value;
+    option.textContent = label;
+    fy.appendChild(option);
+  });
+  const cat = document.getElementById("cat");
+  ["ALL", ...DATA.categories].forEach((value) => {
+    const option = document.createElement("option");
+    option.value = value;
+    option.textContent = value === "ALL" ? "All categories" : value;
+    cat.appendChild(option);
+  });
+  fy.addEventListener("change", () => { state.fy = fy.value; render(); });
+  cat.addEventListener("change", () => { state.category = cat.value; render(); });
+  document.querySelector("nav").addEventListener("click", (event) => {
+    const button = event.target.closest("button");
+    if (!button) return;
+    state.page = button.dataset.page;
+    render();
+  });
+  document.getElementById("view").addEventListener("click", (event) => {
+    const header = event.target.closest("th[data-sort]");
+    if (!header) return;
+    const key = header.dataset.sort;
+    state.dir = state.sort === key ? -state.dir : -1;
+    state.sort = key;
+    render();
+  });
+  document.getElementById("foot").textContent = DATA.meta.footer;
+  render();
+}
+init();
+</script>
+</body>
+</html>

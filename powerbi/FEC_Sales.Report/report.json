@@ -1,0 +1,190 @@
+{
+  "config": "{\"version\": \"5.43\", \"activeSectionIndex\": 0, \"defaultDrillFilterOtherVisuals\": true, \"settings\": {\"useNewFilterPaneExperience\": true, \"allowChangeFilterTypes\": true, \"useStylableVisualContainerHeader\": true, \"exportDataMode\": 1, \"useDefaultAggregateDisplayName\": true}}",
+  "layoutOptimization": 0,
+  "sections": [
+    {
+      "displayName": "Overview",
+      "displayOption": 1,
+      "height": 720,
+      "name": "297aea35-5146-5207-9221-f9e963dde66a",
+      "ordinal": 0,
+      "visualContainers": [
+        {
+          "config": "{\"name\": \"66d9ef07-f811-59a7-acf7-d6101b79f27f\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Recognized Revenue\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Recognized Revenue\"}, \"Name\": \"fact_sales.Recognized Revenue\", \"NativeReferenceName\": \"Recognized Revenue\"}]}}}",
+          "filters": "[]",
+          "x": 24,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        },
+        {
+          "config": "{\"name\": \"b1597f1f-e5b9-5606-9f44-a850d3823e4d\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 334, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Gross Margin %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Gross Margin %\"}, \"Name\": \"fact_sales.Gross Margin %\", \"NativeReferenceName\": \"Gross Margin %\"}]}}}",
+          "filters": "[]",
+          "x": 334,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        },
+        {
+          "config": "{\"name\": \"c1e9ec36-b8d6-5af9-921f-1869cce60211\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 644, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Contribution Margin %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Contribution Margin %\"}, \"Name\": \"fact_sales.Contribution Margin %\", \"NativeReferenceName\": \"Contribution Margin %\"}]}}}",
+          "filters": "[]",
+          "x": 644,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        },
+        {
+          "config": "{\"name\": \"7cc5c9ca-3195-5fae-9f96-49f04096b423\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 954, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Revenue YoY %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Revenue YoY %\"}, \"Name\": \"fact_sales.Revenue YoY %\", \"NativeReferenceName\": \"Revenue YoY %\"}]}}}",
+          "filters": "[]",
+          "x": 954,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        }
+      ],
+      "width": 1280
+    },
+    {
+      "displayName": "Unit economics",
+      "displayOption": 1,
+      "height": 720,
+      "name": "e9048b84-779f-5c90-b591-b6a71475de55",
+      "ordinal": 1,
+      "visualContainers": [
+        {
+          "config": "{\"name\": \"394498b1-2cad-5748-906d-f84bb906d13d\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Average Selling Price\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Average Selling Price\"}, \"Name\": \"fact_sales.Average Selling Price\", \"NativeReferenceName\": \"Average Selling Price\"}]}}}",
+          "filters": "[]",
+          "x": 24,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        },
+        {
+          "config": "{\"name\": \"37f06a74-a68b-5b1e-82f0-fee0c9c8ec78\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 334, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Purchase Cost per Unit\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Purchase Cost per Unit\"}, \"Name\": \"fact_sales.Purchase Cost per Unit\", \"NativeReferenceName\": \"Purchase Cost per Unit\"}]}}}",
+          "filters": "[]",
+          "x": 334,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        },
+        {
+          "config": "{\"name\": \"c229c945-1104-5a5d-a5c3-2a96f016bc0c\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 644, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Unit Margin\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Unit Margin\"}, \"Name\": \"fact_sales.Unit Margin\", \"NativeReferenceName\": \"Unit Margin\"}]}}}",
+          "filters": "[]",
+          "x": 644,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        },
+        {
+          "config": "{\"name\": \"70bc268a-3a24-5f80-a2fb-45a08d59c1b1\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 954, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Purchase Price Variance %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Purchase Price Variance %\"}, \"Name\": \"fact_sales.Purchase Price Variance %\", \"NativeReferenceName\": \"Purchase Price Variance %\"}]}}}",
+          "filters": "[]",
+          "x": 954,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        }
+      ],
+      "width": 1280
+    },
+    {
+      "displayName": "Suppliers",
+      "displayOption": 1,
+      "height": 720,
+      "name": "54e57156-72e7-5fc2-94c2-b99c2f151399",
+      "ordinal": 2,
+      "visualContainers": [
+        {
+          "config": "{\"name\": \"88100473-f6ea-50de-90e8-355dc01c5f1f\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.On-Time Delivery %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"On-Time Delivery %\"}, \"Name\": \"fact_sales.On-Time Delivery %\", \"NativeReferenceName\": \"On-Time Delivery %\"}]}}}",
+          "filters": "[]",
+          "x": 24,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        },
+        {
+          "config": "{\"name\": \"1dedcb4c-5bd0-59eb-9608-5c5570bc35e9\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 334, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Fill Rate %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Fill Rate %\"}, \"Name\": \"fact_sales.Fill Rate %\", \"NativeReferenceName\": \"Fill Rate %\"}]}}}",
+          "filters": "[]",
+          "x": 334,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        },
+        {
+          "config": "{\"name\": \"6f66db5c-23ed-5b68-814e-48fb88fb46a4\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 644, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Defect Rate %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Defect Rate %\"}, \"Name\": \"fact_sales.Defect Rate %\", \"NativeReferenceName\": \"Defect Rate %\"}]}}}",
+          "filters": "[]",
+          "x": 644,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        },
+        {
+          "config": "{\"name\": \"729e53f4-a468-5bc5-88c3-feda7f676a54\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 954, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Average Lead Time (days)\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Average Lead Time (days)\"}, \"Name\": \"fact_sales.Average Lead Time (days)\", \"NativeReferenceName\": \"Average Lead Time (days)\"}]}}}",
+          "filters": "[]",
+          "x": 954,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        }
+      ],
+      "width": 1280
+    },
+    {
+      "displayName": "Risk",
+      "displayOption": 1,
+      "height": 720,
+      "name": "1fe0cd27-1033-583c-807a-646b24f6d3d3",
+      "ordinal": 3,
+      "visualContainers": [
+        {
+          "config": "{\"name\": \"8d1427c6-192c-5cd7-aae1-0c68a1f8676f\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 24, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Top 10 Spend Share\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Top 10 Spend Share\"}, \"Name\": \"fact_sales.Top 10 Spend Share\", \"NativeReferenceName\": \"Top 10 Spend Share\"}]}}}",
+          "filters": "[]",
+          "x": 24,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        },
+        {
+          "config": "{\"name\": \"6c53a183-9e92-5548-9989-e1a143e1b8b7\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 334, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Spend HHI\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Spend HHI\"}, \"Name\": \"fact_sales.Spend HHI\", \"NativeReferenceName\": \"Spend HHI\"}]}}}",
+          "filters": "[]",
+          "x": 334,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        },
+        {
+          "config": "{\"name\": \"0ca40b9f-0f1a-5a4a-b732-856d527dafc1\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 644, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Single-Source SKU %\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Single-Source SKU %\"}, \"Name\": \"fact_sales.Single-Source SKU %\", \"NativeReferenceName\": \"Single-Source SKU %\"}]}}}",
+          "filters": "[]",
+          "x": 644,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        },
+        {
+          "config": "{\"name\": \"787d65b0-e6c1-53cc-af3c-8d1165728188\", \"layouts\": [{\"id\": 0, \"position\": {\"x\": 954, \"y\": 24, \"z\": 0, \"width\": 290, \"height\": 140}}], \"singleVisual\": {\"visualType\": \"card\", \"projections\": {\"Values\": [{\"queryRef\": \"fact_sales.Weighted Days Payable\"}]}, \"prototypeQuery\": {\"Version\": 2, \"From\": [{\"Name\": \"s\", \"Entity\": \"fact_sales\", \"Type\": 0}], \"Select\": [{\"Measure\": {\"Expression\": {\"SourceRef\": {\"Source\": \"s\"}}, \"Property\": \"Weighted Days Payable\"}, \"Name\": \"fact_sales.Weighted Days Payable\", \"NativeReferenceName\": \"Weighted Days Payable\"}]}}}",
+          "filters": "[]",
+          "x": 954,
+          "y": 24,
+          "z": 0,
+          "width": 290,
+          "height": 140
+        }
+      ],
+      "width": 1280
+    }
+  ]
+}
